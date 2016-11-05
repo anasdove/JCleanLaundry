@@ -2,6 +2,7 @@
 
 namespace JCleanLaundry.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
         [HttpGet]

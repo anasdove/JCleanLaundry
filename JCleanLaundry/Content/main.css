@@ -71,8 +71,32 @@
     
 }
 
+.cuci-baru_div-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .cuci-baru_image-title {
     color: #3AA935;
+}
+
+.cuci-baru_div-aksi {
+    padding-top: 15px;
+    text-align: right;
+}
+
+.cuci-baru_btn-proses{
+    background: #f37021;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.cuci-baru_btn-batal{
+    background: #999999;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 /* Cari Cucian */

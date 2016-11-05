@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace JCleanLaundry.Controllers
 {
+    [Authorize]
     public class BarangController : Controller
     {
         private JCleanLaundryEntities db = new JCleanLaundryEntities();

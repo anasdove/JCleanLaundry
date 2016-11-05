@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/05/2016 17:20:33</publishTime>
+      <publishTime>11/05/2016 17:48:21</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/05/2016 17:20:33</publishTime>
+      <publishTime>11/05/2016 17:48:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/03/2015 17:07:22</publishTime>
@@ -238,6 +238,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="SQL_Scripts/table.sql">
       <publishTime>11/05/2016 16:05:09</publishTime>
     </File>
+    <File Include="SQL_Scripts/tambah_barang.sql">
+      <publishTime>11/05/2016 17:45:43</publishTime>
+    </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>11/05/2016 11:22:05</publishTime>
     </File>
@@ -356,7 +359,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/05/2016 17:20:57</publishTime>
+      <publishTime>11/05/2016 17:48:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

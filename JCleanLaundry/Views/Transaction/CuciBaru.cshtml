@@ -6,9 +6,54 @@
     <i class="fa fa-shopping-basket cuci-baru_image-title" aria-hidden="true" ></i> Cuci Baru
 </h2>
 <hr/>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12"></div>
+<div class="col-xs-12 cuci-baru_div-container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="fa fa-user" aria-hidden="true"></i> Data Pelanggan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    Masukkan Data Pelanggan
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="fa fa-black-tie" aria-hidden="true"></i> Detail Cucian
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    Masukkan Detail Cucian
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i> Pembayaran
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Detail Pembayaran
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cuci-baru_div-aksi">
+        <button class="btn btn-primary btn-lg cuci-baru_btn-batal"><i class="fa fa-times" aria-hidden="true"></i> Batal</button>
+        <button class="btn btn-primary btn-lg cuci-baru_btn-proses"><i class="fa fa-floppy-o" aria-hidden="true"></i> Proses</button>
     </div>
 </div>
 
