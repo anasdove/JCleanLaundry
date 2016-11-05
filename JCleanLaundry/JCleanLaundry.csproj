@@ -245,6 +245,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Transaction\MenuUtama.cshtml" />
+    <Content Include="Views\Transaction\CuciBaru.cshtml" />
+    <Content Include="Views\Transaction\CariCucian.cshtml" />
+    <Content Include="Views\Transaction\Pengecekan.cshtml" />
+    <Content Include="Views\Transaction\Laporan.cshtml" />
+    <Content Include="Views\Transaction\TambahBarang.cshtml" />
+    <Content Include="Views\Transaction\Pelanggan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

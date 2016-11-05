@@ -64,3 +64,63 @@
 .menu-utama_btn-pelanggan {
     background-color: #0ABAEE;
 }
+
+/* Cuci Baru */
+
+.cuci-baru {
+    
+}
+
+.cuci-baru_image-title {
+    color: #3AA935;
+}
+
+/* Cari Cucian */
+
+.cari-cucian {
+    
+}
+
+.cari-cucian_image-title {
+    color: #ec008c;
+}
+
+/* Pengecekan */
+
+.pengecekan {
+    
+}
+
+.pengecekan_image-title {
+    color: #f37021;
+}
+
+/* Laporan */
+
+.laporan {
+    
+}
+
+.laporan_image-title {
+    color: #3255a6;
+}
+
+/* Tambah Barang */
+
+.tambah-barang {
+    
+}
+
+.tambah-barang_image-title {
+    color: #b64b85;
+}
+
+/* Pelanggan */
+
+.pelanggan {
+    
+}
+
+.pelanggan_image-title {
+    color: #b64b85;
+}
