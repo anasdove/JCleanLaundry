@@ -1,0 +1,66 @@
+﻿@model IEnumerable<JCleanLaundry.Barang>
+
+@{
+    ViewBag.Title = "Daftar Barang";
+}
+
+<h2>
+    <i class="fa fa-black-tie tambah-barang_image-title" aria-hidden="true"></i> Barang
+</h2>
+
+<hr/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                <a class="btn btn-primary" href="@Url.Action("Create", "Barang")"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Barang</a>
+            </p>
+
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nama)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Harga)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipeCuciFK.Tipe)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nama)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Harga)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipeCuciFK.Tipe)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Barang", new {id = item.Id})">
+                                <i class="fa fa-pencil"></i>
+                            </a> 
+                            @*|
+                            <a href="@Url.Action("Details", "Barang", new {id = item.Id})">
+                                <i class="fa fa-info"></i>
+                            </a>*@ 
+                            @*|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

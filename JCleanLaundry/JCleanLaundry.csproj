@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -167,18 +169,40 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Barang.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="JCleanLaundryModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JCleanLaundryModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JCleanLaundryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JCleanLaundryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JCleanLaundryModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="TipeCuci.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -190,6 +214,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JCleanLaundryModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JCleanLaundryModel.edmx</DependentUpon>
+      <LastGenOutput>JCleanLaundryModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="JCleanLaundryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JCleanLaundryModel.edmx</DependentUpon>
+      <LastGenOutput>JCleanLaundryModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -197,6 +231,13 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <EntityDeploy Include="JCleanLaundryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JCleanLaundryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="JCleanLaundryModel.edmx.diagram">
+      <DependentUpon>JCleanLaundryModel.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\JCleanLaundry.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -210,6 +251,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="SQL_Scripts\table.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -251,6 +293,11 @@
     <Content Include="Views\Transaction\Laporan.cshtml" />
     <Content Include="Views\Transaction\TambahBarang.cshtml" />
     <Content Include="Views\Transaction\Pelanggan.cshtml" />
+    <Content Include="Views\Barang\Create.cshtml" />
+    <Content Include="Views\Barang\Delete.cshtml" />
+    <Content Include="Views\Barang\Details.cshtml" />
+    <Content Include="Views\Barang\Edit.cshtml" />
+    <Content Include="Views\Barang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,6 +309,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
