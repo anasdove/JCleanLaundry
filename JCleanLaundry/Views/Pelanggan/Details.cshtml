@@ -1,0 +1,50 @@
+﻿@model JCleanLaundry.Pelanggan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pelanggan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoKtp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoKtp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alamat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

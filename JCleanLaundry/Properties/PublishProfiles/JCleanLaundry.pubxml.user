@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/05/2016 17:48:21</publishTime>
+      <publishTime>11/05/2016 18:30:45</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/05/2016 17:48:21</publishTime>
+      <publishTime>11/05/2016 18:30:45</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/03/2015 17:07:22</publishTime>
@@ -149,7 +149,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/03/2016 11:08:06</publishTime>
     </File>
     <File Include="Content/main.css">
-      <publishTime>11/05/2016 15:34:16</publishTime>
+      <publishTime>11/05/2016 18:28:11</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/05/2016 11:22:01</publishTime>
@@ -335,7 +335,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 15:28:30</publishTime>
     </File>
     <File Include="Views/Transaction/CuciBaru.cshtml">
-      <publishTime>11/05/2016 15:25:16</publishTime>
+      <publishTime>11/05/2016 18:26:56</publishTime>
     </File>
     <File Include="Views/Transaction/Laporan.cshtml">
       <publishTime>11/05/2016 15:31:48</publishTime>
@@ -359,7 +359,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/05/2016 17:48:56</publishTime>
+      <publishTime>11/05/2016 18:31:04</publishTime>
     </File>
   </ItemGroup>
 </Project>

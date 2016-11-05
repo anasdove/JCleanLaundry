@@ -17,13 +17,13 @@ namespace JCleanLaundry
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipeCuci()
         {
-            this.DaftarBarangFK = new HashSet<Barang>();
+            this.BarangFK = new HashSet<Barang>();
         }
     
         public int Id { get; set; }
         public string Tipe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Barang> DaftarBarangFK { get; set; }
+        public virtual ICollection<Barang> BarangFK { get; set; }
     }
 }

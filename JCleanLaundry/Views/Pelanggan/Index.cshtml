@@ -1,0 +1,47 @@
+﻿@model IEnumerable<JCleanLaundry.Pelanggan>
+
+@{
+    ViewBag.Title = "Daftar Pelanggan";
+}
+
+<h2>
+    <i class="fa fa-user tambah-barang_image-title" aria-hidden="true"></i> Pelanggan
+</h2>
+
+<hr />
+
+<div class="col-xs-12 cuci-baru_div-container">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create", "Pelanggan")"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Pelanggan</a>
+    </p>
+
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hp)
+            </th>
+            <th>Ubah</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hp)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Pelanggan", new {id = item.Id})">
+                        <i class="fa fa-pencil"></i>
+                    </a> 
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

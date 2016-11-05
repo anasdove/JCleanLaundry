@@ -1,21 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="JCleanLaundryModelStoreContainer" CdmEntityContainer="JCleanLaundryEntities">
-    <EntitySetMapping Name="BarangDbSet">
+    <EntitySetMapping Name="Barangs1">
       <EntityTypeMapping TypeName="JCleanLaundryModel.Barang">
         <MappingFragment StoreEntitySet="BARANG">
-          <ScalarProperty Name="TipeCuciId" ColumnName="TIPE_CUCI_ID" />
-          <ScalarProperty Name="Harga" ColumnName="HARGA" />
-          <ScalarProperty Name="Nama" ColumnName="NAMA" />
-          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="TipeCuciId" ColumnName="TipeCuciId" />
+          <ScalarProperty Name="Harga" ColumnName="Harga" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TipeCuciDbSet">
+    <EntitySetMapping Name="Pelanggans1">
+      <EntityTypeMapping TypeName="JCleanLaundryModel.Pelanggan">
+        <MappingFragment StoreEntitySet="PELANGGAN">
+          <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+          <ScalarProperty Name="NoKtp" ColumnName="NoKtp" />
+          <ScalarProperty Name="Hp" ColumnName="Hp" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipeCucis">
       <EntityTypeMapping TypeName="JCleanLaundryModel.TipeCuci">
         <MappingFragment StoreEntitySet="TIPE_CUCI">
-          <ScalarProperty Name="Tipe" ColumnName="TIPE" />
-          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="Tipe" ColumnName="Tipe" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

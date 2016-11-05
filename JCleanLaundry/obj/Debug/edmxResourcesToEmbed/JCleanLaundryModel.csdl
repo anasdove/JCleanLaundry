@@ -1,22 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="JCleanLaundryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="JCleanLaundryEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="BarangDbSet" EntityType="JCleanLaundryModel.Barang" />
-    <EntitySet Name="TipeCuciDbSet" EntityType="JCleanLaundryModel.TipeCuci" />
-    <AssociationSet Name="FK__BARANG__TIPE_CUC__398D8EEE" Association="JCleanLaundryModel.FK__BARANG__TIPE_CUC__398D8EEE">
-      <End Role="TIPE_CUCI" EntitySet="TipeCuciDbSet" />
-      <End Role="BARANG" EntitySet="BarangDbSet" />
+    <EntitySet Name="Barangs1" EntityType="JCleanLaundryModel.Barang" />
+    <EntitySet Name="Pelanggans1" EntityType="JCleanLaundryModel.Pelanggan" />
+    <EntitySet Name="TipeCucis" EntityType="JCleanLaundryModel.TipeCuci" />
+    <AssociationSet Name="FK__BARANG__TipeCuci__60A75C0F" Association="JCleanLaundryModel.FK__BARANG__TipeCuci__60A75C0F">
+      <End Role="TIPE_CUCI" EntitySet="TipeCucis" />
+      <End Role="BARANG" EntitySet="Barangs1" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Barang">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Harga" Type="Int32" Nullable="false" />
-    <Property Name="TipeCuciId" Type="Int32" />
-    <NavigationProperty Name="TipeCuciFK" Relationship="JCleanLaundryModel.FK__BARANG__TIPE_CUC__398D8EEE" FromRole="BARANG" ToRole="TIPE_CUCI" />
+    <Property Name="TipeCuciId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipeCuciFK" Relationship="JCleanLaundryModel.FK__BARANG__TipeCuci__60A75C0F" FromRole="BARANG" ToRole="TIPE_CUCI" />
+  </EntityType>
+  <EntityType Name="Pelanggan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nama" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoKtp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Alamat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TipeCuci">
     <Key>
@@ -24,10 +35,10 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Tipe" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="DaftarBarangFK" Relationship="JCleanLaundryModel.FK__BARANG__TIPE_CUC__398D8EEE" FromRole="TIPE_CUCI" ToRole="BARANG" />
+    <NavigationProperty Name="BarangFK" Relationship="JCleanLaundryModel.FK__BARANG__TipeCuci__60A75C0F" FromRole="TIPE_CUCI" ToRole="BARANG" />
   </EntityType>
-  <Association Name="FK__BARANG__TIPE_CUC__398D8EEE">
-    <End Type="JCleanLaundryModel.TipeCuci" Role="TIPE_CUCI" Multiplicity="0..1" />
+  <Association Name="FK__BARANG__TipeCuci__60A75C0F">
+    <End Type="JCleanLaundryModel.TipeCuci" Role="TIPE_CUCI" Multiplicity="1" />
     <End Type="JCleanLaundryModel.Barang" Role="BARANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TIPE_CUCI">

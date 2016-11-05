@@ -26,7 +26,7 @@ namespace JCleanLaundry
         }
     
         public virtual DbSet<Barang> BarangDbSet { get; set; }
-
+        public virtual DbSet<Pelanggan> PelangganDbSet { get; set; }
         public virtual DbSet<TipeCuci> TipeCuciDbSet { get; set; }
     }
 }

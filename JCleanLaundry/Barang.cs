@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace JCleanLaundry
 {
     using System;
@@ -15,9 +17,12 @@ namespace JCleanLaundry
     public partial class Barang
     {
         public int Id { get; set; }
+        [Required]
         public string Nama { get; set; }
+        [Required]
         public int Harga { get; set; }
-        public Nullable<int> TipeCuciId { get; set; }
+        [Required]
+        public int TipeCuciId { get; set; }
     
         public virtual TipeCuci TipeCuciFK { get; set; }
     }
