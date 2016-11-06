@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/05/2016 18:30:45</publishTime>
+      <publishTime>11/05/2016 19:51:16</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/05/2016 18:30:45</publishTime>
+      <publishTime>11/05/2016 19:51:16</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/03/2015 17:07:22</publishTime>
@@ -191,7 +191,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:01</publishTime>
     </File>
     <File Include="JCleanLaundryModel.edmx.diagram">
-      <publishTime>11/05/2016 16:14:35</publishTime>
+      <publishTime>11/05/2016 19:44:13</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>11/05/2016 11:22:11</publishTime>
@@ -235,11 +235,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/_references.js">
       <publishTime>11/05/2016 11:22:04</publishTime>
     </File>
+    <File Include="SQL_Scripts/buat_tabel_barang.sql">
+      <publishTime>11/05/2016 19:36:19</publishTime>
+    </File>
+    <File Include="SQL_Scripts/buat_tabel_pelanggan.sql">
+      <publishTime>11/05/2016 19:08:58</publishTime>
+    </File>
     <File Include="SQL_Scripts/table.sql">
       <publishTime>11/05/2016 16:05:09</publishTime>
     </File>
     <File Include="SQL_Scripts/tambah_barang.sql">
-      <publishTime>11/05/2016 17:45:43</publishTime>
+      <publishTime>11/05/2016 19:39:54</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>11/05/2016 11:22:05</publishTime>
@@ -278,7 +284,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:05</publishTime>
     </File>
     <File Include="Views/Barang/Create.cshtml">
-      <publishTime>11/05/2016 17:14:39</publishTime>
+      <publishTime>11/05/2016 19:37:11</publishTime>
     </File>
     <File Include="Views/Barang/Delete.cshtml">
       <publishTime>11/05/2016 16:21:50</publishTime>
@@ -287,10 +293,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 16:21:51</publishTime>
     </File>
     <File Include="Views/Barang/Edit.cshtml">
-      <publishTime>11/05/2016 17:15:08</publishTime>
+      <publishTime>11/05/2016 19:31:53</publishTime>
     </File>
     <File Include="Views/Barang/Index.cshtml">
-      <publishTime>11/05/2016 17:13:51</publishTime>
+      <publishTime>11/05/2016 19:23:28</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>11/05/2016 11:58:45</publishTime>
@@ -319,6 +325,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>11/05/2016 11:22:05</publishTime>
     </File>
+    <File Include="Views/Pelanggan/Create.cshtml">
+      <publishTime>11/05/2016 19:26:50</publishTime>
+    </File>
+    <File Include="Views/Pelanggan/Delete.cshtml">
+      <publishTime>11/05/2016 19:11:33</publishTime>
+    </File>
+    <File Include="Views/Pelanggan/Details.cshtml">
+      <publishTime>11/05/2016 19:11:34</publishTime>
+    </File>
+    <File Include="Views/Pelanggan/Edit.cshtml">
+      <publishTime>11/05/2016 19:30:59</publishTime>
+    </File>
+    <File Include="Views/Pelanggan/Index.cshtml">
+      <publishTime>11/05/2016 19:23:23</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/05/2016 11:22:05</publishTime>
     </File>
@@ -341,7 +362,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 15:31:48</publishTime>
     </File>
     <File Include="Views/Transaction/MenuUtama.cshtml">
-      <publishTime>11/05/2016 17:11:35</publishTime>
+      <publishTime>11/05/2016 19:15:09</publishTime>
     </File>
     <File Include="Views/Transaction/Pelanggan.cshtml">
       <publishTime>11/05/2016 15:32:22</publishTime>
@@ -359,7 +380,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/05/2016 18:31:04</publishTime>
+      <publishTime>11/05/2016 19:51:35</publishTime>
     </File>
   </ItemGroup>
 </Project>

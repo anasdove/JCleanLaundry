@@ -17,9 +17,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="@Url.Action("Index", "Home")" class="navbar-brand main_header-brand-hyperlink">
-                    <i class="fa fa-shirtsinbulk" aria-hidden="true"></i> JClean Laundry
-                </a>
+                @if (Request.IsAuthenticated)
+                {
+                    <a href="@Url.Action("MenuUtama", "Transaction")" class="navbar-brand main_header-brand-hyperlink">
+                        <i class="fa fa-shirtsinbulk" aria-hidden="true"></i> JClean Laundry
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Index", "Home")" class="navbar-brand main_header-brand-hyperlink">
+                        <i class="fa fa-shirtsinbulk" aria-hidden="true"></i> JClean Laundry
+                    </a>
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

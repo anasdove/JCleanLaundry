@@ -8,78 +8,61 @@ namespace JCleanLaundry.Controllers
     [Authorize]
     public class BarangController : Controller
     {
-        private JCleanLaundryEntities db = new JCleanLaundryEntities();
-        
-        public ActionResult Index()
-        {
-            var daftarBarang = db.BarangDbSet.Include(b => b.TipeCuciFK);
+        private readonly JCleanLaundryEntities _db;
 
-            return View(daftarBarang.ToList());
+        public BarangController()
+        {
+            _db = new JCleanLaundryEntities();
         }
 
-        // GET: Barang/Details/5
+        public ActionResult Index()
+        {
+            return View(_db.BarangDbSet.Include(b => b.TipeCuciFK).OrderBy(x => x.Nama).ToList());
+        }
+
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var barang = db.BarangDbSet.Find(id);
-
-            if (barang == null)
-            {
-                return HttpNotFound();
-            }
-
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var barang = _db.BarangDbSet.Find(id);
+            if (barang == null) return HttpNotFound();
             return View(barang);
         }
 
         // GET: Barang/Create
         public ActionResult Create()
         {
-            ViewBag.TipeCuciId = new SelectList(db.TipeCuciDbSet, "Id", "Tipe");
-
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe");
             return View();
         }
 
-        // POST: Barang/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nama,Harga,TipeCuciId")] Barang barang)
         {
             if (ModelState.IsValid)
             {
-                db.BarangDbSet.Add(barang);
-
-                db.SaveChanges();
-
+                _db.BarangDbSet.Add(barang);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TipeCuciId = new SelectList(db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
-
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
             return View(barang);
         }
 
         // GET: Barang/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null)return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var barang = db.BarangDbSet.Find(id);
+            var barang = _db.BarangDbSet.Find(id);
 
             if (barang == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.TipeCuciId = new SelectList(db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
 
             return View(barang);
         }
@@ -93,14 +76,14 @@ namespace JCleanLaundry.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(barang).State = EntityState.Modified;
+                _db.Entry(barang).State = EntityState.Modified;
 
-                db.SaveChanges();
+                _db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TipeCuciId = new SelectList(db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
 
             return View(barang);
         }
@@ -113,7 +96,7 @@ namespace JCleanLaundry.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var barang = db.BarangDbSet.Find(id);
+            var barang = _db.BarangDbSet.Find(id);
 
             if (barang == null)
             {
@@ -128,11 +111,11 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var barang = db.BarangDbSet.Find(id);
+            var barang = _db.BarangDbSet.Find(id);
 
-            db.BarangDbSet.Remove(barang);
+            _db.BarangDbSet.Remove(barang);
 
-            db.SaveChanges();
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -141,7 +124,7 @@ namespace JCleanLaundry.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
 
             base.Dispose(disposing);

@@ -51,16 +51,13 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nama,Hp,NoKtp,Alamat")] Pelanggan pelanggan)
         {
-            if (ModelState.IsValid)
-            {
-                db.PelangganDbSet.Add(pelanggan);
+            if (!ModelState.IsValid) return View(pelanggan);
 
-                db.SaveChanges();
+            db.PelangganDbSet.Add(pelanggan);
 
-                return RedirectToAction("Index");
-            }
+            db.SaveChanges();
 
-            return View(pelanggan);
+            return RedirectToAction("Index");
         }
 
         // GET: Pelanggan/Edit/5
@@ -87,16 +84,12 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nama,Hp,NoKtp,Alamat")] Pelanggan pelanggan)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(pelanggan).State = EntityState.Modified;
+            if (!ModelState.IsValid) return View(pelanggan);
 
-                db.SaveChanges();
+            db.Entry(pelanggan).State = EntityState.Modified;
+            db.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
-
-            return View(pelanggan);
+            return RedirectToAction("Index");
         }
 
         // GET: Pelanggan/Delete/5

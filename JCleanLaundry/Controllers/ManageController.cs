@@ -15,7 +15,6 @@ namespace JCleanLaundry.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
         public ManageController()
         {
         }
@@ -50,8 +49,6 @@ namespace JCleanLaundry.Controllers
             }
         }
 
-        //
-        // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -118,15 +115,13 @@ namespace JCleanLaundry.Controllers
             }
             // Generate the token and send it
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
-            if (UserManager.SmsService != null)
+            if (UserManager.SmsService == null) return RedirectToAction("VerifyPhoneNumber", new {PhoneNumber = model.Number});
+            var message = new IdentityMessage
             {
-                var message = new IdentityMessage
-                {
-                    Destination = model.Number,
-                    Body = "Your security code is: " + code
-                };
-                await UserManager.SmsService.SendAsync(message);
-            }
+                Destination = model.Number,
+                Body = "Your security code is: " + code
+            };
+            await UserManager.SmsService.SendAsync(message);
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
