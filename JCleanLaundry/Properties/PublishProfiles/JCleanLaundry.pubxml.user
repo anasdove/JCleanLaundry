@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/06/2016 09:05:11</publishTime>
+      <publishTime>11/06/2016 11:26:49</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/06/2016 09:05:11</publishTime>
+      <publishTime>11/06/2016 11:26:49</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/03/2015 17:07:22</publishTime>
@@ -149,7 +149,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/03/2016 11:08:06</publishTime>
     </File>
     <File Include="Content/main.css">
-      <publishTime>11/06/2016 08:03:24</publishTime>
+      <publishTime>11/06/2016 11:15:19</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/05/2016 11:22:01</publishTime>
@@ -202,6 +202,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>11/05/2016 11:22:02</publishTime>
     </File>
+    <File Include="Scripts/JCleanLaundry/cucibaru.js">
+      <publishTime>11/06/2016 11:24:35</publishTime>
+    </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>11/05/2016 11:22:03</publishTime>
     </File>
@@ -233,7 +236,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:04</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>11/05/2016 11:22:04</publishTime>
+      <publishTime>11/06/2016 09:39:19</publishTime>
     </File>
     <File Include="SQL_Scripts/buat_tabel_barang.sql">
       <publishTime>11/05/2016 19:36:19</publishTime>
@@ -326,7 +329,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:05</publishTime>
     </File>
     <File Include="Views/Pelanggan/Create.cshtml">
-      <publishTime>11/06/2016 08:55:12</publishTime>
+      <publishTime>11/06/2016 09:27:11</publishTime>
     </File>
     <File Include="Views/Pelanggan/Delete.cshtml">
       <publishTime>11/05/2016 19:11:33</publishTime>
@@ -335,10 +338,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2016 08:55:31</publishTime>
     </File>
     <File Include="Views/Pelanggan/Edit.cshtml">
-      <publishTime>11/06/2016 08:55:46</publishTime>
+      <publishTime>11/06/2016 09:27:30</publishTime>
     </File>
     <File Include="Views/Pelanggan/Index.cshtml">
-      <publishTime>11/06/2016 08:55:39</publishTime>
+      <publishTime>11/06/2016 09:27:38</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/05/2016 11:22:05</publishTime>
@@ -347,7 +350,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:05</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/05/2016 20:08:19</publishTime>
+      <publishTime>11/06/2016 10:04:43</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/06/2016 08:02:05</publishTime>
@@ -356,7 +359,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 15:28:30</publishTime>
     </File>
     <File Include="Views/Transaction/CuciBaru.cshtml">
-      <publishTime>11/06/2016 08:21:04</publishTime>
+      <publishTime>11/06/2016 11:23:38</publishTime>
     </File>
     <File Include="Views/Transaction/Laporan.cshtml">
       <publishTime>11/05/2016 15:31:48</publishTime>
@@ -380,7 +383,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/06/2016 09:05:31</publishTime>
+      <publishTime>11/06/2016 11:27:14</publishTime>
     </File>
   </ItemGroup>
 </Project>

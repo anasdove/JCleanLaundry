@@ -133,6 +133,5 @@ C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Secur
 C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.csprojResolveAssemblyReference.cache
 C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.dll
 C:\Users\ronal\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.pdb

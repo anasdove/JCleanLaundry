@@ -100,7 +100,8 @@
 }
 
 .cuci-baru_div-periksa-pelanggan {
-    text-align: right;
+    padding-left: 0;
+    text-align: left;
 }
 
 .cuci-baru_div-periksa-pelanggan button {
