@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JCleanLaundry.Barang>
+﻿@model IEnumerable<JCleanLaundry.Models.BarangViewModel>
 
 @{
     ViewBag.Title = "Daftar Barang";
@@ -12,7 +12,9 @@
 
 <div class="col-xs-12 cuci-baru_div-container">
     <p>
-        <a class="btn btn-primary" href="@Url.Action("Create", "Barang")"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Barang</a>
+        <a class="btn btn-primary" href="@Url.Action("Create", "Barang")">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Barang
+        </a>
     </p>
 
     <table class="table table-responsive table-striped">
@@ -24,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Harga)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipeCuciFK.Tipe)
+                @Html.DisplayNameFor(model => model.TipeCuci.Tipe)
             </th>
             <th>Ubah</th>
         </tr>
@@ -39,18 +41,12 @@
                     @Html.DisplayFor(modelItem => item.Harga)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TipeCuciFK.Tipe)
+                    @Html.DisplayFor(modelItem => item.TipeCuci.Tipe)
                 </td>
                 <td>
                     <a href="@Url.Action("Edit", "Barang", new {id = item.Id})">
                         <i class="fa fa-pencil"></i>
-                    </a> 
-                    @*|
-                    <a href="@Url.Action("Details", "Barang", new {id = item.Id})">
-                        <i class="fa fa-info"></i>
-                    </a>*@ 
-                    @*|
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </a>
                 </td>
             </tr>
         }

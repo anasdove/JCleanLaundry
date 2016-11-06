@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JCleanLaundry.Models
+{
+    public class PelangganViewModel
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string Nama { get; set; }
+
+        [Required]
+        public string Hp { get; set; }
+
+        [Required]
+        [Display(Name="No KTP")]
+        public string NoKtp { get; set; }
+
+        public string Alamat { get; set; }
+    }
+}

@@ -19,9 +19,7 @@ namespace JCleanLaundry
         public int Id { get; set; }
         [Required]
         public string Nama { get; set; }
-        [Required]
         public string Hp { get; set; }
-        [Required]
         public string NoKtp { get; set; }
         public string Alamat { get; set; }
     }

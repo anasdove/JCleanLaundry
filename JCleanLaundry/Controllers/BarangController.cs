@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using JCleanLaundry.Models;
 
 namespace JCleanLaundry.Controllers
 {
@@ -17,7 +19,19 @@ namespace JCleanLaundry.Controllers
 
         public ActionResult Index()
         {
-            return View(_db.BarangDbSet.Include(b => b.TipeCuciFK).OrderBy(x => x.Nama).ToList());
+            var models = _db.BarangDbSet.Include(x => x.TipeCuciFK).OrderBy(x => x.Nama).Select(x => new BarangViewModel
+            {
+                Harga = x.Harga,
+                Id = x.Id,
+                Nama = x.Nama,
+                TipeCuci = new TipeCuciViewModel
+                {
+                    Id = x.TipeCuciFK.Id,
+                    Tipe = x.TipeCuciFK.Tipe
+                }
+            }).OrderBy(x => x.Nama).ToList();
+
+            return View(models);
         }
 
         public ActionResult Details(int? id)
@@ -37,17 +51,24 @@ namespace JCleanLaundry.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nama,Harga,TipeCuciId")] Barang barang)
+        public ActionResult Create(BarangViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var barang = new Barang
+                {
+                    Harga = model.Harga,
+                    Nama = model.Nama,
+                    TipeCuciId = model.TipeCuciId
+                };
+
                 _db.BarangDbSet.Add(barang);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
-            return View(barang);
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
+            return View(model);
         }
 
         // GET: Barang/Edit/5
@@ -62,20 +83,33 @@ namespace JCleanLaundry.Controllers
                 return HttpNotFound();
             }
 
+            var model = new BarangViewModel
+            {
+                Id = barang.Id,
+                Harga = barang.Harga,
+                Nama = barang.Nama,
+                TipeCuciId = barang.TipeCuciId
+            };
+
             ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
 
-            return View(barang);
+            return View(model);
         }
-
-        // POST: Barang/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nama,Harga,TipeCuciId")] Barang barang)
+        public ActionResult Edit(BarangViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var barang = new Barang
+                {
+                    Id = model.Id,
+                    Harga = model.Harga,
+                    Nama = model.Nama,
+                    TipeCuciId = model.TipeCuciId
+                };
+
                 _db.Entry(barang).State = EntityState.Modified;
 
                 _db.SaveChanges();
@@ -83,9 +117,9 @@ namespace JCleanLaundry.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
 
-            return View(barang);
+            return View(model);
         }
 
         // GET: Barang/Delete/5

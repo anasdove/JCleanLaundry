@@ -1,26 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using JCleanLaundry;
+using JCleanLaundry.Models;
 
 namespace JCleanLaundry.Controllers
 {
     public class PelangganController : Controller
     {
-        private JCleanLaundryEntities db = new JCleanLaundryEntities();
+        private readonly JCleanLaundryEntities _db;
 
-        // GET: Pelanggan
+        public PelangganController()
+        {
+            _db = new JCleanLaundryEntities();
+        }
+        
         public ActionResult Index()
         {
-            return View(db.PelangganDbSet.ToList());
-        }
+            var model = _db.PelangganDbSet.Select(x => new PelangganViewModel
+            {
+                Alamat = x.Alamat,
+                Hp = x.Hp,
+                Id = x.Id,
+                Nama = x.Nama,
+                NoKtp = x.NoKtp
+            }).ToList();
 
-        // GET: Pelanggan/Details/5
+            return View(model);
+        }
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -28,39 +36,50 @@ namespace JCleanLaundry.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var pelanggan = db.PelangganDbSet.Find(id);
+            var pelanggan = _db.PelangganDbSet.Find(id);
 
             if (pelanggan == null)
             {
                 return HttpNotFound();
             }
 
-            return View(pelanggan);
-        }
+            var model = new PelangganViewModel
+            {
+                Alamat = pelanggan.Alamat,
+                Hp = pelanggan.Hp,
+                Id = pelanggan.Id,
+                Nama = pelanggan.Nama,
+                NoKtp = pelanggan.NoKtp
+            };
 
-        // GET: Pelanggan/Create
+            return View(model);
+        }
+        
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: Pelanggan/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nama,Hp,NoKtp,Alamat")] Pelanggan pelanggan)
+        public ActionResult Create(PelangganViewModel model)
         {
-            if (!ModelState.IsValid) return View(pelanggan);
+            if (!ModelState.IsValid) return View(model);
 
-            db.PelangganDbSet.Add(pelanggan);
+            var pelanggan = new Pelanggan
+            {
+                Alamat = model.Alamat,
+                Hp = model.Hp,
+                Nama = model.Nama,
+                NoKtp = model.NoKtp
+            };
 
-            db.SaveChanges();
+            _db.PelangganDbSet.Add(pelanggan);
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
-
-        // GET: Pelanggan/Edit/5
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -68,26 +87,42 @@ namespace JCleanLaundry.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var pelanggan = db.PelangganDbSet.Find(id);
+            var pelanggan = _db.PelangganDbSet.Find(id);
 
             if (pelanggan == null)
             {
                 return HttpNotFound();
             }
-            return View(pelanggan);
-        }
 
-        // POST: Pelanggan/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+            var model = new PelangganViewModel
+            {
+                Alamat = pelanggan.Alamat,
+                Hp = pelanggan.Hp,
+                Id = pelanggan.Id,
+                Nama = pelanggan.Nama,
+                NoKtp = pelanggan.NoKtp
+            };
+
+            return View(model);
+        }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nama,Hp,NoKtp,Alamat")] Pelanggan pelanggan)
+        public ActionResult Edit(PelangganViewModel model)
         {
-            if (!ModelState.IsValid) return View(pelanggan);
+            if (!ModelState.IsValid) return View(model);
 
-            db.Entry(pelanggan).State = EntityState.Modified;
-            db.SaveChanges();
+            var pelanggan = new Pelanggan
+            {
+                Id = model.Id,
+                Alamat = model.Alamat,
+                Hp = model.Hp,
+                Nama = model.Nama,
+                NoKtp = model.NoKtp
+            };
+
+            _db.Entry(pelanggan).State = EntityState.Modified;
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -100,7 +135,7 @@ namespace JCleanLaundry.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var pelanggan = db.PelangganDbSet.Find(id);
+            var pelanggan = _db.PelangganDbSet.Find(id);
 
             if (pelanggan == null)
             {
@@ -115,11 +150,11 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var pelanggan = db.PelangganDbSet.Find(id);
+            var pelanggan = _db.PelangganDbSet.Find(id);
 
-            db.PelangganDbSet.Remove(pelanggan);
+            _db.PelangganDbSet.Remove(pelanggan);
 
-            db.SaveChanges();
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -128,7 +163,7 @@ namespace JCleanLaundry.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
 
             base.Dispose(disposing);

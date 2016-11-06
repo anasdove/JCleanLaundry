@@ -197,8 +197,12 @@
       <DependentUpon>JCleanLaundryModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Barang\BarangViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pelanggan\PelangganViewModel.cs" />
+    <Compile Include="Models\TipeCuci\TipeCuciViewModel.cs" />
+    <Compile Include="Models\Transaction\CuciBaruViewModel.cs" />
     <Compile Include="Pelanggan.cs">
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
     </Compile>

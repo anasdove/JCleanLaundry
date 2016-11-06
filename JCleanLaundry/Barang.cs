@@ -17,11 +17,8 @@ namespace JCleanLaundry
     public partial class Barang
     {
         public int Id { get; set; }
-        [Required]
         public string Nama { get; set; }
-        [Required]
         public int Harga { get; set; }
-        [Required]
         public int TipeCuciId { get; set; }
     
         public virtual TipeCuci TipeCuciFK { get; set; }
