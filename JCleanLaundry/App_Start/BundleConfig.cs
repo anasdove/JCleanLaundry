@@ -25,6 +25,9 @@ namespace JCleanLaundry
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jcleanlaundry").Include(
+                      "~/Scripts/JCleanLaundry/cucibaru.js"));
+
             #endregion
 
             #region StyleSheets

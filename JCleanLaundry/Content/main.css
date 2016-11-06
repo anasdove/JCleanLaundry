@@ -99,6 +99,14 @@
     padding-bottom: 15px;
 }
 
+.cuci-baru_div-periksa-pelanggan {
+    text-align: right;
+}
+
+.cuci-baru_div-periksa-pelanggan button {
+    /*width: 100%;*/
+}
+
 /* Cari Cucian */
 
 .cari-cucian {

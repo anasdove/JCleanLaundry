@@ -10,6 +10,7 @@ namespace JCleanLaundry.Models
         public string Nama { get; set; }
 
         [Required]
+        [Display(Name="No HP")]
         public string Hp { get; set; }
 
         [Required]
