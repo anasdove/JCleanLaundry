@@ -37,22 +37,22 @@ var _pelanggan_masukkanDataPelanggan = function (pelanggan) {
 }
 
 var _pelanggan_dataPelangganAktif = function(aktif) {
-    if (aktif) {
-        $("#Pelanggan_Nama, #Pelanggan_NoKtp, #Pelanggan_Alamat").removeAttr("disabled");
-    } else {
-        $("#Pelanggan_Nama, #Pelanggan_NoKtp, #Pelanggan_Alamat").attr("disabled", true);
-    }
-
-    $("#Pelanggan_Nama, #Pelanggan_NoKtp, #Pelanggan_Alamat").val("");
+    var elements = $("#Pelanggan_Nama, #Pelanggan_NoKtp, #Pelanggan_Alamat");
+    if (aktif) elements.removeAttr("disabled");
+    else elements.attr("disabled", true);
+    elements.val("");
 }
 
-var _pelanggan_aktifkanTombolPeriksaNoHp = function(aktif) {
+var _pelanggan_aktifkanTombolPeriksaNoHp = function (aktif) {
+    var buttonPeriksaPelanggan = $("#cuci-baru_btn-periksa-pelanggan");
+    var buttonUlangCariPelanggan = $("#cuci-baru_btn-ulang-cari-pelanggan");
+
     if (aktif) {
-        $("#cuci-baru_btn-periksa-pelanggan").removeAttr("disabled");
-        $("#cuci-baru_btn-ulang-cari-pelanggan").attr("disabled", true);
+        buttonPeriksaPelanggan.removeAttr("disabled");
+        buttonUlangCariPelanggan.attr("disabled", true);
     } else {
-        $("#cuci-baru_btn-periksa-pelanggan").attr("disabled", true);
-        $("#cuci-baru_btn-ulang-cari-pelanggan").removeAttr("disabled");
+        buttonPeriksaPelanggan.attr("disabled", true);
+        buttonUlangCariPelanggan.removeAttr("disabled");
     }
 }
 

@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/06/2016 11:26:49</publishTime>
+      <publishTime>11/06/2016 12:07:08</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/06/2016 11:26:49</publishTime>
+      <publishTime>11/06/2016 12:07:08</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/03/2015 17:07:22</publishTime>
@@ -149,7 +149,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/03/2016 11:08:06</publishTime>
     </File>
     <File Include="Content/main.css">
-      <publishTime>11/06/2016 11:15:19</publishTime>
+      <publishTime>11/06/2016 11:42:06</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/05/2016 11:22:01</publishTime>
@@ -203,7 +203,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:02</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/cucibaru.js">
-      <publishTime>11/06/2016 11:24:35</publishTime>
+      <publishTime>11/06/2016 12:05:31</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>11/05/2016 11:22:03</publishTime>
@@ -359,7 +359,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 15:28:30</publishTime>
     </File>
     <File Include="Views/Transaction/CuciBaru.cshtml">
-      <publishTime>11/06/2016 11:23:38</publishTime>
+      <publishTime>11/06/2016 12:00:26</publishTime>
     </File>
     <File Include="Views/Transaction/Laporan.cshtml">
       <publishTime>11/05/2016 15:31:48</publishTime>
@@ -383,7 +383,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 11:22:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/06/2016 11:27:14</publishTime>
+      <publishTime>11/06/2016 12:07:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

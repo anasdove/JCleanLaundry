@@ -58,16 +58,8 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CekNoPelanggan(string noHp)
         {
-            var noHpAda = false;
-
             var pelanggan = _db.PelangganDbSet.FirstOrDefault(x => x.Hp == noHp);
-
-            if (pelanggan != null)
-            {
-                noHpAda = true;
-            }
-
-            return Json(new {noHpAda = noHpAda, pelanggan = pelanggan}, JsonRequestBehavior.AllowGet);
+            return Json(new { noHpAda = pelanggan != null, pelanggan }, JsonRequestBehavior.AllowGet);
         }
     }
 }

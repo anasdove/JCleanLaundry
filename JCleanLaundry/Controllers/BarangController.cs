@@ -53,28 +53,28 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BarangViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var barang = new Barang
-                {
-                    Harga = model.Harga,
-                    Nama = model.Nama,
-                    TipeCuciId = model.TipeCuciId
-                };
-
-                _db.BarangDbSet.Add(barang);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
+                return View(model);
             }
 
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
-            return View(model);
+            var barang = new Barang
+            {
+                Harga = model.Harga,
+                Nama = model.Nama,
+                TipeCuciId = model.TipeCuciId
+            };
+
+            _db.BarangDbSet.Add(barang);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Barang/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var barang = _db.BarangDbSet.Find(id);
 
@@ -95,31 +95,29 @@ namespace JCleanLaundry.Controllers
 
             return View(model);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(BarangViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var barang = new Barang
-                {
-                    Id = model.Id,
-                    Harga = model.Harga,
-                    Nama = model.Nama,
-                    TipeCuciId = model.TipeCuciId
-                };
-
-                _db.Entry(barang).State = EntityState.Modified;
-
-                _db.SaveChanges();
-
-                return RedirectToAction("Index");
+                ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
+                return View(model);
             }
 
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
+            var barang = new Barang
+            {
+                Id = model.Id,
+                Harga = model.Harga,
+                Nama = model.Nama,
+                TipeCuciId = model.TipeCuciId
+            };
 
-            return View(model);
+            _db.Entry(barang).State = EntityState.Modified;
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Barang/Delete/5

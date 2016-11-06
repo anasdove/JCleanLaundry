@@ -31,17 +31,11 @@ namespace JCleanLaundry.Controllers
         
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var pelanggan = _db.PelangganDbSet.Find(id);
 
-            if (pelanggan == null)
-            {
-                return HttpNotFound();
-            }
+            if (pelanggan == null) return HttpNotFound();
 
             var model = new PelangganViewModel
             {
@@ -82,17 +76,11 @@ namespace JCleanLaundry.Controllers
         
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var pelanggan = _db.PelangganDbSet.Find(id);
 
-            if (pelanggan == null)
-            {
-                return HttpNotFound();
-            }
+            if (pelanggan == null) return HttpNotFound();
 
             var model = new PelangganViewModel
             {
@@ -130,17 +118,11 @@ namespace JCleanLaundry.Controllers
         // GET: Pelanggan/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var pelanggan = _db.PelangganDbSet.Find(id);
 
-            if (pelanggan == null)
-            {
-                return HttpNotFound();
-            }
+            if (pelanggan == null) return HttpNotFound();
 
             return View(pelanggan);
         }
@@ -153,7 +135,6 @@ namespace JCleanLaundry.Controllers
             var pelanggan = _db.PelangganDbSet.Find(id);
 
             _db.PelangganDbSet.Remove(pelanggan);
-
             _db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -161,11 +142,7 @@ namespace JCleanLaundry.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                _db.Dispose();
-            }
-
+            if (disposing) _db.Dispose();
             base.Dispose(disposing);
         }
     }
