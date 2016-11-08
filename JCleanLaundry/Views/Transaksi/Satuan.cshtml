@@ -1,0 +1,157 @@
+﻿@model JCleanLaundry.Models.CuciBaruViewModel
+
+@{
+    ViewBag.Title = "Satuan";
+}
+<h2>
+    <i class="fa fa-shopping-basket transaksi_image-title" aria-hidden="true"></i> Transaksi - Satuan
+</h2>
+<hr />
+<div class="col-xs-12 transaksi_div-container" id="transaksi_div-container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="fa fa-user" aria-hidden="true"></i> Data Pelanggan
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="alert alert-danger" id="transaksi_div-pelanggan-error">
+                            No HP belum terdaftar.
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Pelanggan.Hp, new { @class = "control-label col-xs-12" })
+                            <div class="col-xs-12">
+                                @Html.EditorFor(model => model.Pelanggan.Hp, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Pelanggan.Hp, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 transaksi_div-periksa-pelanggan">
+                            <button class="btn btn-warning" id="transaksi_btn-ulang-cari-pelanggan">
+                                <i class="fa fa-search  " aria-hidden="true"></i> Ulangi
+                            </button>
+                            <button class="btn btn-success" id="transaksi_btn-periksa-pelanggan">
+                                <i class="fa fa-check" aria-hidden="true"></i> Periksa No HP
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Pelanggan.Nama, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Pelanggan.Nama, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Pelanggan.Nama, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Pelanggan.NoKtp, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Pelanggan.NoKtp, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Pelanggan.NoKtp, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Pelanggan.Alamat, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Pelanggan.Alamat, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Pelanggan.Alamat, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="fa fa-black-tie" aria-hidden="true"></i> Detail Cucian
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TipeCucian, new { @class = "control-label col-xs-12" })
+                            <div class="col-xs-12">
+                                @Html.DropDownList("TipeCucian", null, htmlAttributes: new { @class = "form-control", @id = "satuan_ddl-tipecucian" })
+                                @Html.ValidationMessageFor(model => model.TipeCucian, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BarangId, new { @class = "control-label col-xs-12" })
+                            <div class="col-xs-12">
+                                @Html.DropDownList("BarangId", null, htmlAttributes: new { @class = "form-control", @id = "satuan_ddl-barang" })
+                                @Html.ValidationMessageFor(model => model.BarangId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i> Pembayaran
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    Detail Pembayaran
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="transaksi_div-aksi">
+        <button class="btn btn-primary btn-lg transaksi_btn-batal"><i class="fa fa-times" aria-hidden="true"></i> Batal</button>
+        <button class="btn btn-primary btn-lg transaksi_btn-proses"><i class="fa fa-floppy-o" aria-hidden="true"></i> Proses</button>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/transaksi")
+
+<script>
+    $(document).ready(function() {
+
+        var loading, transaksi_pelanggan, transaksi_cucian;
+
+        // Display loading Icon when ajax call
+        loading = jclean.web.loading();
+        loading.init("#transaksi_div-container");
+
+        // Transaksi Pelanggan
+        transaksi_pelanggan = jclean.web.transaksi_pelanggan();
+
+        transaksi_pelanggan.awal();
+
+        $("#transaksi_btn-periksa-pelanggan").click(function() {
+            transaksi_pelanggan.cekNoHpPelanggan('@Url.Action("CekNoPelanggan", "Transaksi")');
+        });
+
+        $("#transaksi_btn-ulang-cari-pelanggan").click(function () {
+            transaksi_pelanggan.awal();
+        });
+
+        // Transaksi Cucian
+        transaksi_cucian = jclean.web.transaksi_cucian();
+
+        $("#satuan_ddl-tipecucian").change(function () {
+            transaksi_cucian.tampilkanBarang(this.value, '@Url.Action("TampilBarang", "Transaksi")');
+        });
+
+    });
+</script>

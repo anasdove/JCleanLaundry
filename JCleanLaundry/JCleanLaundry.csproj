@@ -201,7 +201,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pelanggan\PelangganViewModel.cs" />
     <Compile Include="Models\TipeCuci\TipeCuciViewModel.cs" />
-    <Compile Include="Models\Transaction\CuciBaruViewModel.cs" />
+    <Compile Include="Models\Transaksi\CuciBaruViewModel.cs" />
     <Compile Include="Pelanggan.cs">
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
     </Compile>
@@ -253,6 +253,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\JCleanLaundry.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JCleanLaundry\transaksi_cucian.js" />
     <Content Include="Scripts\JCleanLaundry\transaksi_pelanggan.js" />
     <Content Include="Scripts\JCleanLaundry\loading.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -303,6 +304,8 @@
     <Content Include="Views\Transaksi\Pengambilan.cshtml" />
     <Content Include="Views\Transaksi\Pengecekan.cshtml" />
     <Content Include="Views\Transaksi\Laporan.cshtml" />
+    <Content Include="Views\Transaksi\JenisTransaksi.cshtml" />
+    <Content Include="Views\Transaksi\Satuan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

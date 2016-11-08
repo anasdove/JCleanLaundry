@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Jenis Transaksi";
+}
+<h2>
+    <i class="fa fa-home" aria-hidden="true"></i> Jenis Transaksi
+</h2>
+<div class="container menu-utama">
+    <div class="row">
+        <div class="col-xs-6 menu-utama_div-kiri">
+            @using (Html.BeginForm("Satuan", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-transaksi_btn-satuan" type="submit">
+                    <i class="fa fa-black-tie" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                SATUAN
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kanan">
+            @using (Html.BeginForm("Kiloan", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-transaksi_btn-kiloan" type="submit">
+                    <i class="fa fa fa-database" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                KILOAN
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

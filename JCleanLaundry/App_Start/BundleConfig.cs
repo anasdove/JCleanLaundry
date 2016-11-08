@@ -30,7 +30,8 @@ namespace JCleanLaundry
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/transaksi").Include(
-                      "~/Scripts/JCleanLaundry/transaksi_pelanggan.js"));
+                      "~/Scripts/JCleanLaundry/transaksi_pelanggan.js",
+                      "~/Scripts/JCleanLaundry/transaksi_cucian.js"));
 
             #endregion
 

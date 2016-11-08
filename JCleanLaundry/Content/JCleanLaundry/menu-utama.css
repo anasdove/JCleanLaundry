@@ -62,3 +62,12 @@
 .menu-utama_btn-pelanggan {
     background-color: #3AA935;
 }
+
+/* Jenis Transaksi */
+.menu-transaksi_btn-satuan{
+    background-color: #3AA935;
+}
+
+.menu-transaksi_btn-kiloan{
+    background-color: #ec008c;
+}
