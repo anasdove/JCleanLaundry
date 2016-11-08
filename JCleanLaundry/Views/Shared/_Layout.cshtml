@@ -19,7 +19,7 @@
                 </button>
                 @if (Request.IsAuthenticated)
                 {
-                    <a href="@Url.Action("MenuUtama", "Transaction")" class="navbar-brand main_header-brand-hyperlink">
+                    <a href="@Url.Action("MenuUtama", "Transaksi")" class="navbar-brand main_header-brand-hyperlink">
                         <i class="fa fa-shirtsinbulk" aria-hidden="true"></i> JClean Laundry
                     </a>
                 }
@@ -35,7 +35,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         <li>
-                            <a href="@Url.Action("MenuUtama", "Transaction")"><i class="fa fa-home" aria-hidden="true"></i> Menu Utama</a>
+                            <a href="@Url.Action("MenuUtama", "Transaksi")"><i class="fa fa-home" aria-hidden="true"></i> Menu Utama</a>
                         </li>
                     }
                     else
@@ -63,9 +63,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jcleanlaundry")
+    @Scripts.Render("~/bundles/global")
     @RenderSection("scripts", required: false)
 </body>
 </html>

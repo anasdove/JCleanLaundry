@@ -25,8 +25,12 @@ namespace JCleanLaundry
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jcleanlaundry").Include(
-                      "~/Scripts/JCleanLaundry/cucibaru.js"));
+            bundles.Add(new ScriptBundle("~/bundles/global").Include(
+                     "~/Scripts/JCleanLaundry/loading.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/transaksi").Include(
+                      "~/Scripts/JCleanLaundry/transaksi_pelanggan.js"));
 
             #endregion
 
@@ -36,7 +40,13 @@ namespace JCleanLaundry
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/font-awesome.min.css",
-                      "~/Content/main.css"));
+                      "~/Content/main.css",
+
+                      "~/Content/JCleanLaundry/loading.css",
+                      "~/Content/JCleanLaundry/menu-utama.css",
+                      "~/Content/JCleanLaundry/pengambilan.css",
+                      "~/Content/JCleanLaundry/status.css",
+                      "~/Content/JCleanLaundry/transaksi.css"));
 
             #endregion
         }

@@ -1,0 +1,42 @@
+﻿/* Transaksi */
+
+.transaksi {
+    
+}
+
+.transaksi_div-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.transaksi_image-title {
+    color: #3AA935;
+}
+
+.transaksi_div-aksi {
+    padding-top: 15px;
+    text-align: right;
+}
+
+.transaksi_btn-proses{
+    background: #f37021;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.transaksi_btn-batal{
+    background: #999999;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.transaksi_div-periksa-pelanggan {
+    padding-left: 0;
+    text-align: left;
+}
+
+.transaksi_div-periksa-pelanggan button {
+    /*width: 100%;*/
+}

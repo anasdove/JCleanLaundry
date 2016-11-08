@@ -4,11 +4,11 @@ using System.Web.Mvc;
 namespace JCleanLaundry.Controllers
 {
     [Authorize]
-    public class TransactionController : Controller
+    public class TransaksiController : Controller
     {
         private readonly JCleanLaundryEntities _db;
 
-        public TransactionController()
+        public TransaksiController()
         {
             _db = new JCleanLaundryEntities();
         }
@@ -20,13 +20,19 @@ namespace JCleanLaundry.Controllers
         }
 
         [HttpGet]
-        public ActionResult CuciBaru()
+        public ActionResult Transaksi()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult CariCucian()
+        public ActionResult Pengambilan()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Status()
         {
             return View();
         }
@@ -42,19 +48,7 @@ namespace JCleanLaundry.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult TambahBarang()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Pelanggan()
-        {
-            return View();
-        }
-
+        
         [HttpGet]
         public ActionResult CekNoPelanggan(string noHp)
         {

@@ -175,9 +175,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PelangganController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\TransaksiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,12 +215,18 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\JCleanLaundry\menu-utama.css" />
+    <Content Include="Content\JCleanLaundry\pengambilan.css" />
+    <Content Include="Content\JCleanLaundry\status.css" />
+    <Content Include="Content\JCleanLaundry\transaksi.css" />
+    <Content Include="Content\JCleanLaundry\loading.css" />
     <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\jclean-loading.gif" />
     <Content Include="JCleanLaundryModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JCleanLaundryModel.edmx</DependentUpon>
@@ -248,7 +253,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\JCleanLaundry.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\JCleanLaundry\cucibaru.js" />
+    <Content Include="Scripts\JCleanLaundry\transaksi_pelanggan.js" />
+    <Content Include="Scripts\JCleanLaundry\loading.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -277,33 +283,10 @@
     <Content Include="Views\Home\Paket.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Masuk.cshtml" />
     <Content Include="Views\Account\Daftar.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Transaction\MenuUtama.cshtml" />
-    <Content Include="Views\Transaction\CuciBaru.cshtml" />
-    <Content Include="Views\Transaction\CariCucian.cshtml" />
-    <Content Include="Views\Transaction\Pengecekan.cshtml" />
-    <Content Include="Views\Transaction\Laporan.cshtml" />
-    <Content Include="Views\Transaction\TambahBarang.cshtml" />
-    <Content Include="Views\Transaction\Pelanggan.cshtml" />
     <Content Include="Views\Barang\Create.cshtml" />
     <Content Include="Views\Barang\Delete.cshtml" />
     <Content Include="Views\Barang\Details.cshtml" />
@@ -314,6 +297,12 @@
     <Content Include="Views\Pelanggan\Details.cshtml" />
     <Content Include="Views\Pelanggan\Edit.cshtml" />
     <Content Include="Views\Pelanggan\Index.cshtml" />
+    <Content Include="Views\Transaksi\Status.cshtml" />
+    <Content Include="Views\Transaksi\MenuUtama.cshtml" />
+    <Content Include="Views\Transaksi\Transaksi.cshtml" />
+    <Content Include="Views\Transaksi\Pengambilan.cshtml" />
+    <Content Include="Views\Transaksi\Pengecekan.cshtml" />
+    <Content Include="Views\Transaksi\Laporan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

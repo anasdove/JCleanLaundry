@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Menu Utama";
+}
+<h2>
+    <i class="fa fa-home" aria-hidden="true"></i> Menu Utama
+</h2>
+<div class="container menu-utama">
+    <div class="row">
+        <div class="col-xs-6 menu-utama_div-kiri">
+            @using (Html.BeginForm("Transaksi", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-transaksi" type="submit">
+                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                TRANSAKSI
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kanan">
+            @using (Html.BeginForm("Pengambilan", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-pengambilan" type="submit">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                PENGAMBILAN
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kiri">
+            @using (Html.BeginForm("Status", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-status" type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                STATUS
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kanan">
+            @using (Html.BeginForm("Pengecekan", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-pengecekan" type="submit">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                PENGECEKAN
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kiri">
+            @using (Html.BeginForm("Laporan", "Transaksi", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-laporan" type="submit">
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                LAPORAN
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kanan">
+            @using (Html.BeginForm("Index", "Barang", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-tambah-barang" type="submit">
+                    <i class="fa fa-black-tie" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                BARANG
+            </div>
+        </div>
+        <div class="col-xs-6 menu-utama_div-kiri">
+            @using (Html.BeginForm("Index", "Pelanggan", FormMethod.Get))
+            {
+                <button class="btn-primary btn-lg menu-utama_btn menu-utama_btn-pelanggan" type="submit">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                </button>
+            }
+            <div class="menu-utama_div-text">
+                PELANGGAN
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
