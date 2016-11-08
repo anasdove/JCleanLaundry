@@ -2,7 +2,7 @@
 
 namespace JCleanLaundry.Models
 {
-    public class CuciBaruViewModel
+    public class SatuanViewModel
     {
         public PelangganViewModel Pelanggan { get; set; }
 
@@ -15,5 +15,9 @@ namespace JCleanLaundry.Models
         [Required]
         [Display(Name = "Tipe")]
         public int TipeCucian { get; set; }
+
+        [Required]
+        [Display(Name = "Jumlah")]
+        public int Jumlah { get; set; }
     }
 }

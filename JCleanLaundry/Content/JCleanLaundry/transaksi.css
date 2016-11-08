@@ -32,11 +32,6 @@
     padding-bottom: 15px;
 }
 
-.transaksi_div-periksa-pelanggan {
-    padding-left: 0;
-    text-align: left;
-}
-
-.transaksi_div-periksa-pelanggan button {
-    /*width: 100%;*/
+#transaksi_div-pelanggan-error{
+    display: none;
 }

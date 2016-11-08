@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:35</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/08/2016 13:11:07</publishTime>
+      <publishTime>11/08/2016 14:58:23</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/08/2016 13:11:07</publishTime>
+      <publishTime>11/08/2016 14:58:23</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/08/2016 10:37:35</publishTime>
@@ -152,7 +152,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:54:15</publishTime>
     </File>
     <File Include="Content/JCleanLaundry/menu-utama.css">
-      <publishTime>11/08/2016 12:28:42</publishTime>
+      <publishTime>11/08/2016 13:46:55</publishTime>
     </File>
     <File Include="Content/JCleanLaundry/pengambilan.css">
       <publishTime>11/08/2016 12:30:18</publishTime>
@@ -226,8 +226,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/JCleanLaundry/loading.js">
       <publishTime>11/08/2016 12:09:59</publishTime>
     </File>
+    <File Include="Scripts/JCleanLaundry/transaksi_cucian.js">
+      <publishTime>11/08/2016 14:57:33</publishTime>
+    </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
-      <publishTime>11/08/2016 12:46:31</publishTime>
+      <publishTime>11/08/2016 14:09:00</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>11/08/2016 10:37:33</publishTime>
@@ -260,7 +263,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>11/08/2016 12:42:27</publishTime>
+      <publishTime>11/08/2016 14:41:35</publishTime>
     </File>
     <File Include="SQL_Scripts/buat_tabel_barang.sql">
       <publishTime>11/08/2016 10:37:34</publishTime>
@@ -400,17 +403,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Transaction/TambahBarang.cshtml">
       <publishTime>11/05/2016 15:32:07</publishTime>
     </File>
+    <File Include="Views/Transaksi/JenisTransaksi.cshtml">
+      <publishTime>11/08/2016 13:54:40</publishTime>
+    </File>
     <File Include="Views/Transaksi/Laporan.cshtml">
       <publishTime>11/08/2016 12:49:57</publishTime>
     </File>
     <File Include="Views/Transaksi/MenuUtama.cshtml">
-      <publishTime>11/08/2016 12:50:03</publishTime>
+      <publishTime>11/08/2016 13:47:15</publishTime>
     </File>
     <File Include="Views/Transaksi/Pengambilan.cshtml">
       <publishTime>11/08/2016 12:50:07</publishTime>
     </File>
     <File Include="Views/Transaksi/Pengecekan.cshtml">
       <publishTime>11/08/2016 12:50:10</publishTime>
+    </File>
+    <File Include="Views/Transaksi/Satuan.cshtml">
+      <publishTime>11/08/2016 14:51:38</publishTime>
     </File>
     <File Include="Views/Transaksi/Status.cshtml">
       <publishTime>11/08/2016 12:50:13</publishTime>
@@ -425,7 +434,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/08/2016 13:15:28</publishTime>
+      <publishTime>11/08/2016 15:02:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -29,6 +29,12 @@ namespace JCleanLaundry
                      "~/Scripts/JCleanLaundry/loading.js"
             ));
 
+            bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
+                    "~/Scripts/JCleanLaundry/datatable-helper.js",
+                    "~/Scripts/Bootstrap/dataTables.bootstrap.min.js",
+                    "~/Scripts/JQuery/jquery.dataTables.min.js"
+            ));
+
             bundles.Add(new ScriptBundle("~/bundles/transaksi").Include(
                       "~/Scripts/JCleanLaundry/transaksi_pelanggan.js",
                       "~/Scripts/JCleanLaundry/transaksi_cucian.js"));
@@ -42,6 +48,8 @@ namespace JCleanLaundry
                       "~/Content/site.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/main.css",
+
+                      "~/Content/JCleanLaundry/dataTables.bootstrap.min.css",
 
                       "~/Content/JCleanLaundry/loading.css",
                       "~/Content/JCleanLaundry/menu-utama.css",

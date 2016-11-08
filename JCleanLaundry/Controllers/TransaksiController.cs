@@ -30,7 +30,7 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult Satuan()
         {
-            var model = new CuciBaruViewModel
+            var model = new SatuanViewModel
             {
                 Barang = new BarangViewModel(),
                 Pelanggan = new PelangganViewModel()
