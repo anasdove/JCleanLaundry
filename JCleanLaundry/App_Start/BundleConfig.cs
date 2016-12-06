@@ -30,9 +30,9 @@ namespace JCleanLaundry
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
-                    "~/Scripts/JCleanLaundry/datatable-helper.js",
+                    "~/Scripts/JQuery/jquery.dataTables.min.js",
                     "~/Scripts/Bootstrap/dataTables.bootstrap.min.js",
-                    "~/Scripts/JQuery/jquery.dataTables.min.js"
+                    "~/Scripts/JCleanLaundry/datatable-helper.js"
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/transaksi").Include(

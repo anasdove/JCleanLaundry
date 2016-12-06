@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:35</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>11/08/2016 14:58:23</publishTime>
+      <publishTime>11/08/2016 16:51:14</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>11/08/2016 14:58:23</publishTime>
+      <publishTime>11/08/2016 16:51:14</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/08/2016 10:37:35</publishTime>
@@ -148,6 +148,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/font-awesome.min.css">
       <publishTime>11/08/2016 10:37:33</publishTime>
     </File>
+    <File Include="Content/JCleanLaundry/dataTables.bootstrap.min.css">
+      <publishTime>10/17/2016 06:07:24</publishTime>
+    </File>
     <File Include="Content/JCleanLaundry/loading.css">
       <publishTime>11/08/2016 12:54:15</publishTime>
     </File>
@@ -161,7 +164,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:32:16</publishTime>
     </File>
     <File Include="Content/JCleanLaundry/transaksi.css">
-      <publishTime>11/08/2016 12:28:12</publishTime>
+      <publishTime>11/08/2016 15:48:53</publishTime>
     </File>
     <File Include="Content/main.css">
       <publishTime>11/08/2016 12:29:16</publishTime>
@@ -220,14 +223,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>11/08/2016 10:37:33</publishTime>
     </File>
+    <File Include="Scripts/Bootstrap/dataTables.bootstrap.min.js">
+      <publishTime>10/17/2016 06:07:24</publishTime>
+    </File>
     <File Include="Scripts/JCleanLaundry/cucibaru.js">
       <publishTime>11/06/2016 12:05:31</publishTime>
+    </File>
+    <File Include="Scripts/JCleanLaundry/datatable-helper.js">
+      <publishTime>11/08/2016 16:30:23</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/loading.js">
       <publishTime>11/08/2016 12:09:59</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_cucian.js">
-      <publishTime>11/08/2016 14:57:33</publishTime>
+      <publishTime>11/08/2016 16:48:02</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
       <publishTime>11/08/2016 14:09:00</publishTime>
@@ -253,6 +262,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
+    <File Include="Scripts/JQuery/jquery.dataTables.min.js">
+      <publishTime>09/21/2016 14:33:37</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
@@ -263,7 +275,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>11/08/2016 14:41:35</publishTime>
+      <publishTime>11/08/2016 15:56:30</publishTime>
     </File>
     <File Include="SQL_Scripts/buat_tabel_barang.sql">
       <publishTime>11/08/2016 10:37:34</publishTime>
@@ -419,7 +431,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:50:10</publishTime>
     </File>
     <File Include="Views/Transaksi/Satuan.cshtml">
-      <publishTime>11/08/2016 14:51:38</publishTime>
+      <publishTime>11/08/2016 16:35:58</publishTime>
     </File>
     <File Include="Views/Transaksi/Status.cshtml">
       <publishTime>11/08/2016 12:50:13</publishTime>
@@ -434,7 +446,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/08/2016 15:02:13</publishTime>
+      <publishTime>11/08/2016 16:51:41</publishTime>
     </File>
   </ItemGroup>
 </Project>

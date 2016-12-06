@@ -36,11 +36,19 @@ namespace JCleanLaundry.Controllers
                 Pelanggan = new PelangganViewModel()
             };
 
-            // List Tipe Cucian
             ViewBag.TipeCucian = new SelectList(_db.TipeCuciDbSet.OrderBy(x => x.Id), "Id", "Tipe");
 
-            // List Barang
-            ViewBag.BarangId = new SelectList(_db.BarangDbSet.Where(x => x.TipeCuciId == 1), "Id", "Nama");
+            var daftarBarang = _db.BarangDbSet.Where(x => x.TipeCuciId == 1).Select(x => new BarangViewModel
+            {
+                Id = x.Id,
+                Nama = x.Nama,
+                Harga = x.Harga,
+                TipeCuciId = x.TipeCuciId
+            }).ToList();
+
+            daftarBarang.Insert(0, new BarangViewModel { Id = 0, Nama = "-- Pilih Barang --" });
+
+            ViewBag.BarangId = new SelectList(daftarBarang, "Id", "Nama");
 
             return View(model);
         }
@@ -85,11 +93,24 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult TampilBarang(int tipeCuciId)
         {
-            var daftarBarang = _db.BarangDbSet.Where(x => x.TipeCuciId == tipeCuciId).ToList();
+            var daftarBarang = _db.BarangDbSet.Where(x => x.TipeCuciId == tipeCuciId).Select(x => new BarangViewModel{
+                                                                                                       Id = x.Id,
+                                                                                                       Nama = x.Nama
+                                                                                                    }).ToList();
 
-            var barangDDL = new SelectList(daftarBarang, "Id", "Nama", 0);
+            daftarBarang.Insert(0, new BarangViewModel { Id = 0, Nama = "-- Pilih Barang --" });
+
+            var barangDDL = new SelectList(daftarBarang, "Id", "Nama", 0);            
 
             return Json(barangDDL, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult CariHarga(int kodeBarang)
+        {
+            var daftarBarang = _db.BarangDbSet.Where(x => x.Id == kodeBarang).SingleOrDefault();
+
+            return Json(daftarBarang.Harga, JsonRequestBehavior.AllowGet);
         }
     }
 }

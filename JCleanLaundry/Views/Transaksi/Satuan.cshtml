@@ -104,9 +104,16 @@
                         </div>
 
                         <div class="form-group">
+                            @Html.Label("Harga", new { @class = "control-label col-sm-3" })
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Harga, new { @class = "form-control",  @id = "satuan_text-harga", @disabled = "disabled" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             @Html.LabelFor(model => model.Jumlah, new { @class = "control-label col-sm-3" })
                             <div class="col-sm-9">
-                                @Html.EditorFor(model => model.Jumlah, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextBoxFor(model => model.Jumlah, new { @class = "form-control", placeholder = "Masukkan jumlah" })
                                 @Html.ValidationMessageFor(model => model.Jumlah, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -126,6 +133,7 @@
                 </div>
             </div>
         </div>
+
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
@@ -140,15 +148,32 @@
                 </div>
             </div>
         </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a aria-expanded="false">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i> Total Bayar
+                    </a>
+                </h4>
+            </div>
+            <div >
+                <div class="panel-body div_satuan-total-bayar-body">
+                    <span id="div_satuan-total-bayar">0</span>
+                </div>
+            </div>
+        </div>
+
     </div>
+
     <div class="transaksi_div-aksi">
         <button class="btn btn-primary btn-lg transaksi_btn-batal"><i class="fa fa-times" aria-hidden="true"></i> Batal</button>
         <button class="btn btn-primary btn-lg transaksi_btn-proses"><i class="fa fa-floppy-o" aria-hidden="true"></i> Proses</button>
     </div>
 </div>
 @Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/datatable")
+@Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/transaksi")
 
 <script>
@@ -156,35 +181,39 @@
 
         var loading, transaksi_pelanggan, transaksi_cucian;
 
-        // Display loading Icon when ajax call
         loading = jclean.web.loading();
         loading.init("#transaksi_div-container");
 
-        // Transaksi Pelanggan
         transaksi_pelanggan = jclean.web.transaksi_pelanggan();
 
         transaksi_pelanggan.awal();
 
-        $("#transaksi_btn-periksa-pelanggan").click(function() {
+        $("#transaksi_btn-periksa-pelanggan").click(function () {
+
             transaksi_pelanggan.cekNoHpPelanggan('@Url.Action("CekNoPelanggan", "Transaksi")');
         });
 
         $("#transaksi_btn-ulang-cari-pelanggan").click(function () {
+
             transaksi_pelanggan.awal();
         });
 
-        // Transaksi Cucian
         transaksi_cucian = jclean.web.transaksi_cucian();
 
         $("#satuan_ddl-tipecucian").change(function () {
+
             transaksi_cucian.tampilkanBarang(this.value, '@Url.Action("TampilBarang", "Transaksi")');
         });
 
-        // Data Table Barang Terpilih
+        $("#satuan_ddl-barang").change(function () {
+
+            transaksi_cucian.tampilkanHarga(this.value, '@Url.Action("CariHarga", "Transaksi")');
+        })
+
         transaksi_cucian.tampilkanTabelBarangAwal();
 
-        // Tombol Masukkan Barang Ke Tabel
         $("#satuan_btn-masukkan-barang").click(function () {
+
             transaksi_cucian.masukkanDataKeTabelBarang();
         });
     });

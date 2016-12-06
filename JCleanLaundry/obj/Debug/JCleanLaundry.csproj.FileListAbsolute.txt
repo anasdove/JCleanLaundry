@@ -201,6 +201,6 @@ C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.S
 C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.csprojResolveAssemblyReference.cache
 C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.dll
 C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.pdb
+C:\Users\choirul_a\Source\Repos\JCleanLaundry\JCleanLaundry\obj\Debug\JCleanLaundry.csprojResolveAssemblyReference.cache

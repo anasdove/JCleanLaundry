@@ -35,3 +35,13 @@
 #transaksi_div-pelanggan-error{
     display: none;
 }
+
+/* ---------- Satuan ------------ */
+
+.div_satuan-total-bayar-body{
+    text-align: right;
+}
+
+#div_satuan-total-bayar{
+    font-size: 23pt;
+}

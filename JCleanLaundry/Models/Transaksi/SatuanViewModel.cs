@@ -19,5 +19,8 @@ namespace JCleanLaundry.Models
         [Required]
         [Display(Name = "Jumlah")]
         public int Jumlah { get; set; }
+
+        [DataType(DataType.Currency)]
+        public int Harga { get; set; }
     }
 }
