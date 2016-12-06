@@ -7,16 +7,13 @@
 
         // Global variable
         var _tabelBarangSelector    = "#satuan_tabel-barang";
-        var _dataSource             = null;
-        var _defaultDataSource      = [["-", "-", "-", "-", "-"]];
+        var _dataSource             = [];
 
         var _dataTableHelper = jclean.web.dataTableHelper();
 
         var tampilkanTabelBarangAwal = function () {
 
             var columnDef = _setTabelBarangColumnDefinition();
-
-            _dataSource = _defaultDataSource;
 
             _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
 
@@ -39,19 +36,11 @@
 
             var columnDef = _setTabelBarangColumnDefinition();
 
-            if (_dataSource == _defaultDataSource) {
+            var newData = [kodeBarang, tipe, barang, jumlah, harga];
 
-                _dataSource = [[kodeBarang, tipe, barang, jumlah, harga]];
+            _dataSource.push(newData);
 
-                _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
-            } else {
-
-                var newData = [kodeBarang, tipe, barang, jumlah, harga];
-
-                _dataSource.push(newData);
-
-                _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
-            }
+            _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
 
             _updateTotalBayar();
 
@@ -137,6 +126,36 @@
             _updateTotalBayar();
         }
 
+        var prosesTransaksiSatuan = function (url) {
+
+            var uangMuka = $("#UangMuka").val();
+
+            if (!_periksaDataPelanggan()) {
+
+                alert("Data Pelanggan belum diisi");
+
+                return;
+            }
+
+            if (!_periksaDaftarDetailCucian()) {
+
+                alert("Detil Cucian belum diisi");
+
+                return;
+            }
+
+            if (!_periksaUangMuka(uangMuka)) {
+
+                alert("Salah memasukan uang muka");
+                $("#UangMuka").val("");
+
+                return;
+            }
+
+            // Panggil Controller
+            _simpanTransaksi(url);
+        }
+
         var _setTabelBarangColumnDefinition = function () {
 
             return [
@@ -180,8 +199,8 @@
 
             $.each(_dataSource, function (index, value) {
 
-                var harga   = _dataSource[index][3];
-                var jumlah  = _dataSource[index][4];
+                var harga   = _dataSource[index][4];
+                var jumlah  = _dataSource[index][3];
 
                 $totalBayar = $totalBayar + (harga * jumlah);
             })
@@ -204,13 +223,111 @@
             return true;
         }
 
+        var _periksaDataPelanggan = function () {
+
+            var benar = true;
+
+            if ($("#Pelanggan_Nama").val() == "") {
+
+                benar = false;
+            }
+
+            if ($("#Pelanggan_NoKtp").val() == "") {
+
+                benar = false;
+            }
+
+            if ($("#Pelanggan_Alamat").val() == "") {
+
+                benar = false;
+            }
+
+            if ($("#Pelanggan_Hp").val() == "") {
+
+                benar = false;
+            }
+
+            return benar;
+        }
+
+        var _periksaDaftarDetailCucian = function () {
+
+            var benar = true;
+
+            if (_dataSource.length == 0) {
+
+                benar = false;
+            }
+
+            return benar;
+        }
+
+        var _periksaUangMuka = function (uangMuka) {
+
+            var benar = true;
+
+            var uangMuka = $("#UangMuka").val();
+
+            if (isNaN(uangMuka)) {
+
+                benar = false;
+            }
+
+            var harga = Number($("#div_satuan-total-bayar").html().replace(/[^0-9\.]+/g,""));
+
+            if (uangMuka > harga) {
+
+                benar = false;
+            }
+
+            return benar;
+        }
+
+        var _simpanTransaksi = function (url) {
+
+            var transaksiData = [];
+
+            $.each(_dataSource, function (index, val) {
+
+                var kodeBarang      = _dataSource[index][0];
+                var jumlah          = _dataSource[index][3];
+
+                var nama            = $("#Pelanggan_Nama").val();
+                var hp              = $("#Pelanggan_Hp").val();
+                var ktp             = $("#Pelanggan_NoKtp").val();
+                var alamat          = $("#Pelanggan_Alamat").val();
+
+                var uangMuka        = $("#UangMuka").val();
+
+                var data = [kodeBarang, jumlah, nama, hp, ktp, alamat, uangMuka];
+
+                transaksiData.push(data);
+            })
+
+            var ajaxOpsi = {
+                url: url,
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify(transaksiData),
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    
+                }
+            };
+
+            $.ajax(ajaxOpsi);
+        }
+
         // Mark specific method as public
         return {
             "tampilkanBarang"               : tampilkanBarang,
             "tampilkanTabelBarangAwal"      : tampilkanTabelBarangAwal,
             "masukkanDataKeTabelBarang"     : masukkanDataKeTabelBarang,
             "tampilkanHarga"                : tampilkanHarga,
-            "hapusBarangDariTabel"          : hapusBarangDariTabel
+            "hapusBarangDariTabel"          : hapusBarangDariTabel,
+            "prosesTransaksiSatuan"         : prosesTransaksiSatuan
         }
     }
 }());

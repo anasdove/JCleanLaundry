@@ -22,5 +22,8 @@ namespace JCleanLaundry.Models
 
         [DataType(DataType.Currency)]
         public int Harga { get; set; }
+
+        [Display(Name = "Uang Muka")]
+        public int UangMuka { get; set; }
     }
 }

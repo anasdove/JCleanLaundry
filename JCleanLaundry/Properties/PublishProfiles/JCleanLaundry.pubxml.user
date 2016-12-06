@@ -236,7 +236,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:09:59</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_cucian.js">
-      <publishTime>12/06/2016 09:24:31</publishTime>
+      <publishTime>12/06/2016 11:00:13</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
       <publishTime>11/08/2016 14:09:00</publishTime>
@@ -431,7 +431,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:50:10</publishTime>
     </File>
     <File Include="Views/Transaksi/Satuan.cshtml">
-      <publishTime>12/06/2016 09:15:23</publishTime>
+      <publishTime>12/06/2016 09:59:20</publishTime>
     </File>
     <File Include="Views/Transaksi/Status.cshtml">
       <publishTime>11/08/2016 12:50:13</publishTime>

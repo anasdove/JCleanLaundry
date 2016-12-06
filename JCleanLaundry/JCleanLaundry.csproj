@@ -201,6 +201,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pelanggan\PelangganViewModel.cs" />
     <Compile Include="Models\TipeCuci\TipeCuciViewModel.cs" />
+    <Compile Include="Models\Transaksi\ProsesSatuanDetailViewModel.cs" />
+    <Compile Include="Models\Transaksi\ProsesSatuanViewModel.cs" />
     <Compile Include="Models\Transaksi\SatuanViewModel.cs" />
     <Compile Include="Pelanggan.cs">
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>

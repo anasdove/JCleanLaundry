@@ -112,5 +112,37 @@ namespace JCleanLaundry.Controllers
 
             return Json(daftarBarang.Harga, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult SimpanTransaksiSatuan(string[][] daftarCucian)
+        {
+            var daftarDetail = new List<ProsesSatuanDetailViewModel>();
+
+            for(var i = 0; i < daftarCucian.Length; i++)
+            {
+                var detail = new ProsesSatuanDetailViewModel
+                {
+                    KodeBarang  = int.Parse(daftarCucian[i][0]),
+                    Jumlah      = int.Parse(daftarCucian[i][1])
+                };
+
+                daftarDetail.Add(detail);
+            }
+
+            var prosesSatuan = new ProsesSatuanViewModel
+            {
+                Pelanggan   = new PelangganViewModel
+                {
+                    Nama    = daftarCucian[0][2],
+                    Hp      = daftarCucian[0][3],
+                    NoKtp   = daftarCucian[0][4],
+                    Alamat  = daftarCucian[0][5]
+                },
+                UangMuka    = int.Parse(daftarCucian[0][6]),
+                Detail      = daftarDetail
+            };
+            
+            return null;
+        }
     }
 }

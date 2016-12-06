@@ -45,3 +45,10 @@
 #div_satuan-total-bayar{
     font-size: 23pt;
 }
+
+.satuan_btn-proses{
+    background: #f37021;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

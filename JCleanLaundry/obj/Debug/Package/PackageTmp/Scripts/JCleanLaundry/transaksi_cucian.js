@@ -8,9 +8,7 @@
         // Global variable
         var _tabelBarangSelector    = "#satuan_tabel-barang";
         var _dataSource             = null;
-        var _defaultDataSource      = [["-", "-", "-"]];
-
-        var $totalBayar             = 0;
+        var _defaultDataSource      = [["-", "-", "-", "-", "-"]];
 
         var _dataTableHelper = jclean.web.dataTableHelper();
 
@@ -27,6 +25,7 @@
         var masukkanDataKeTabelBarang = function () {
 
             var tipe            = $("#satuan_ddl-tipecucian option:selected").text();
+            var kodeBarang      = $("#satuan_ddl-barang option:selected").val();
             var barang          = $("#satuan_ddl-barang option:selected").text();
             var jumlah          = $("#Jumlah").val();
             var harga           = Number($("#satuan_text-harga").val().replace(/[^0-9\.]+/g,""));
@@ -42,19 +41,19 @@
 
             if (_dataSource == _defaultDataSource) {
 
-                _dataSource = [[tipe, barang, jumlah]];
+                _dataSource = [[kodeBarang, tipe, barang, jumlah, harga]];
 
                 _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
             } else {
 
-                var newData = [tipe, barang, jumlah];
+                var newData = [kodeBarang, tipe, barang, jumlah, harga];
 
                 _dataSource.push(newData);
 
                 _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
             }
 
-            _updateTotalBayar(harga, jumlah);
+            _updateTotalBayar();
 
             _hapusJumlah();
         }
@@ -103,22 +102,65 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
 
-                    // $("#div_satuan-total-bayar").html($totalBayar.toLocaleString());
                     $("#satuan_text-harga").val(data.toLocaleString());
+
+                    $("#Jumlah").val(1);
                 }
             };
 
             $.ajax(ajaxOpsi);
         }
 
+        var hapusBarangDariTabel = function (row) {
+
+            var tipe    = $(row).children()[0].textContent;
+            var barang  = $(row).children()[1].textContent;
+
+            if (tipe == "-") {
+
+                return;
+            }
+
+            brg = _dataSource.filter(function (data) {
+
+                return data[1] == tipe && data[2] == barang
+            });
+
+            var indexBrg = _dataSource.indexOf(brg[0]);
+
+            _dataSource.splice(indexBrg, 1);
+                        
+            var columnDef = _setTabelBarangColumnDefinition();
+
+            _dataTableHelper.loadTableClientSideWithoutURL(_tabelBarangSelector, _dataSource, columnDef);
+
+            _updateTotalBayar();
+        }
+
         var _setTabelBarangColumnDefinition = function () {
 
             return [
-                { title: "Tipe" },
+                {
+                    title       : "Kode Barang",
+                    visible     : false
+                },
 
-                { title: "Barang" },
+                {
+                    title       : "Tipe"
+                },
 
-                { title: "Jumlah" }
+                {
+                    title       : "Barang"
+                },
+
+                {
+                    title       : "Jumlah"
+                },
+
+                {
+                    title       : "Harga",
+                    visible     : false
+                }
             ]
         }
 
@@ -132,9 +174,17 @@
             $("#Jumlah").val("");
         }
 
-        var _updateTotalBayar = function (harga, jumlah) {
+        var _updateTotalBayar = function () {
 
-            $totalBayar = $totalBayar + (harga * jumlah);
+            var $totalBayar = 0;
+
+            $.each(_dataSource, function (index, value) {
+
+                var harga   = _dataSource[index][3];
+                var jumlah  = _dataSource[index][4];
+
+                $totalBayar = $totalBayar + (harga * jumlah);
+            })
 
             $("#div_satuan-total-bayar").html($totalBayar.toLocaleString());
         }
@@ -159,7 +209,8 @@
             "tampilkanBarang"               : tampilkanBarang,
             "tampilkanTabelBarangAwal"      : tampilkanTabelBarangAwal,
             "masukkanDataKeTabelBarang"     : masukkanDataKeTabelBarang,
-            "tampilkanHarga"                : tampilkanHarga
+            "tampilkanHarga"                : tampilkanHarga,
+            "hapusBarangDariTabel"          : hapusBarangDariTabel
         }
     }
 }());

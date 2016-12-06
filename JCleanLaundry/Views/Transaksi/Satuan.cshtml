@@ -144,7 +144,14 @@
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    Detail Pembayaran
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UangMuka, new { @class = "control-label col-sm-3" })
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.UangMuka, new { @class = "form-control", placeholder = "Masukkan uang muka" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -168,7 +175,7 @@
 
     <div class="transaksi_div-aksi">
         <button class="btn btn-primary btn-lg transaksi_btn-batal"><i class="fa fa-times" aria-hidden="true"></i> Batal</button>
-        <button class="btn btn-primary btn-lg transaksi_btn-proses"><i class="fa fa-floppy-o" aria-hidden="true"></i> Proses</button>
+        <button class="btn btn-primary btn-lg satuan_btn-proses"><i class="fa fa-floppy-o" aria-hidden="true"></i> Proses</button>
     </div>
 </div>
 @Scripts.Render("~/bundles/jquery")
@@ -179,53 +186,59 @@
 <script>
     $(document).ready(function() {
 
-        var loading, transaksi_pelanggan, transaksi_cucian;
+        var loadingOJ, transaksi_pelangganOJ, transaksi_cucianOJ;
 
         var _tableSatuanBarangSelector   = "#satuan_tabel-barang";
         var _trTbodySelector             = "tbody tr";
+        var _buttonSatuanProcessSelector = ".satuan_btn-proses";
 
         var _clickEvent         = "click";
 
-        loading = jclean.web.loading();
-        loading.init("#transaksi_div-container");
+        loadingOJ = jclean.web.loading();
+        loadingOJ.init("#transaksi_div-container");
 
-        transaksi_pelanggan = jclean.web.transaksi_pelanggan();
+        transaksi_pelangganOJ = jclean.web.transaksi_pelanggan();
 
-        transaksi_pelanggan.awal();
+        transaksi_pelangganOJ.awal();
 
-        $("#transaksi_btn-periksa-pelanggan").click(function () {
+        $("#transaksi_btn-periksa-pelanggan").on(_clickEvent, function () {
 
-            transaksi_pelanggan.cekNoHpPelanggan('@Url.Action("CekNoPelanggan", "Transaksi")');
+            transaksi_pelangganOJ.cekNoHpPelanggan('@Url.Action("CekNoPelanggan", "Transaksi")');
         });
 
-        $("#transaksi_btn-ulang-cari-pelanggan").click(function () {
+        $("#transaksi_btn-ulang-cari-pelanggan").on(_clickEvent, function () {
 
-            transaksi_pelanggan.awal();
+            transaksi_pelangganOJ.awal();
         });
 
-        transaksi_cucian = jclean.web.transaksi_cucian();
+        transaksi_cucianOJ = jclean.web.transaksi_cucian();
 
         $("#satuan_ddl-tipecucian").change(function () {
 
-            transaksi_cucian.tampilkanBarang(this.value, '@Url.Action("TampilBarang", "Transaksi")');
+            transaksi_cucianOJ.tampilkanBarang(this.value, '@Url.Action("TampilBarang", "Transaksi")');
         });
 
         $("#satuan_ddl-barang").change(function () {
 
-            transaksi_cucian.tampilkanHarga(this.value, '@Url.Action("CariHarga", "Transaksi")');
+            transaksi_cucianOJ.tampilkanHarga(this.value, '@Url.Action("CariHarga", "Transaksi")');
         })
 
-        transaksi_cucian.tampilkanTabelBarangAwal();
+        transaksi_cucianOJ.tampilkanTabelBarangAwal();
 
         $("#satuan_btn-masukkan-barang").click(function () {
 
-            transaksi_cucian.masukkanDataKeTabelBarang();
+            transaksi_cucianOJ.masukkanDataKeTabelBarang();
         });
 
         $(_tableSatuanBarangSelector).on(_clickEvent, _trTbodySelector, function () {
 
             
-            transaksi_cucian.hapusBarangDariTabel(this);
+            transaksi_cucianOJ.hapusBarangDariTabel(this);
+        });
+
+        $(_buttonSatuanProcessSelector).on(_clickEvent, function () {
+
+            transaksi_cucianOJ.prosesTransaksiSatuan('@Url.Action("SimpanTransaksiSatuan", "Transaksi")');
         });
     });
 </script>
