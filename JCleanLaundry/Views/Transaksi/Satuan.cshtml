@@ -181,6 +181,11 @@
 
         var loading, transaksi_pelanggan, transaksi_cucian;
 
+        var _tableSatuanBarangSelector   = "#satuan_tabel-barang";
+        var _trTbodySelector             = "tbody tr";
+
+        var _clickEvent         = "click";
+
         loading = jclean.web.loading();
         loading.init("#transaksi_div-container");
 
@@ -215,6 +220,12 @@
         $("#satuan_btn-masukkan-barang").click(function () {
 
             transaksi_cucian.masukkanDataKeTabelBarang();
+        });
+
+        $(_tableSatuanBarangSelector).on(_clickEvent, _trTbodySelector, function () {
+
+            
+            transaksi_cucian.hapusBarangDariTabel(this);
         });
     });
 </script>
