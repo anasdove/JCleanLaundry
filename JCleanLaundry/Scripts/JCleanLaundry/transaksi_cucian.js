@@ -132,21 +132,22 @@
 
             if (!_periksaDataPelanggan()) {
 
-                alert("Data Pelanggan belum diisi");
+                _tampilkanPeringatan("Data Pelanggan belum diisi");
 
                 return;
             }
 
             if (!_periksaDaftarDetailCucian()) {
 
-                alert("Detil Cucian belum diisi");
+                _tampilkanPeringatan("Detil Cucian belum diisi");
 
                 return;
             }
 
             if (!_periksaUangMuka(uangMuka)) {
 
-                alert("Salah memasukan uang muka");
+                _tampilkanPeringatan("Salah memasukan uang muka");
+
                 $("#UangMuka").val("");
 
                 return;
@@ -211,8 +212,9 @@
         var _periksaDetailCucian = function (jumlah, harga) {
 
             if (isNaN(jumlah) || jumlah < 1 || harga == 0) {
+                
+                _tampilkanPeringatan("Salah masukkan jumlah");
 
-                alert("Salah masukkan jumlah");
                 _hapusJumlah();
 
                 $("#Jumlah").focus();
@@ -273,6 +275,11 @@
                 benar = false;
             }
 
+            if (uangMuka < 0) {
+
+                benar = false;
+            }
+
             var harga = Number($("#div_satuan-total-bayar").html().replace(/[^0-9\.]+/g,""));
 
             if (uangMuka > harga) {
@@ -318,6 +325,12 @@
             };
 
             $.ajax(ajaxOpsi);
+        }
+
+        var _tampilkanPeringatan = function (peringatan) {
+
+            $("#div-errorModal").modal();
+            $("#div-errorModalContainer").html(peringatan);
         }
 
         // Mark specific method as public

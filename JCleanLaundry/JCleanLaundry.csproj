@@ -312,6 +312,7 @@
     <Content Include="Views\Transaksi\Laporan.cshtml" />
     <Content Include="Views\Transaksi\JenisTransaksi.cshtml" />
     <Content Include="Views\Transaksi\Satuan.cshtml" />
+    <Content Include="Views\Transaksi\Modal\_ErrorModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
