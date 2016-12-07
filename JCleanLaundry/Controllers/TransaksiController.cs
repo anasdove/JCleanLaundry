@@ -141,8 +141,38 @@ namespace JCleanLaundry.Controllers
                 UangMuka    = int.Parse(daftarCucian[0][6]),
                 Detail      = daftarDetail
             };
-            
-            return null;
+
+            var pelangganAda = _db.PelangganDbSet.Where(x => x.NoKtp == prosesSatuan.Pelanggan.NoKtp).Any();
+
+            if (!pelangganAda)
+            {
+                SimpanDataPelanggan(prosesSatuan.Pelanggan);
+            }
+
+            // Simpan Transaksi:
+            var kodeTransaksiSatuan = "S1001";
+
+            return Json(kodeTransaksiSatuan, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult CetakTransaksi(string kodeTransaksi)
+        {
+            return View();
+        }
+
+        private void SimpanDataPelanggan(PelangganViewModel model)
+        {
+            var pelanggan = new Pelanggan
+            {
+                Alamat = model.Alamat,
+                Hp = model.Hp,
+                Nama = model.Nama,
+                NoKtp = model.NoKtp
+            };
+
+            _db.PelangganDbSet.Add(pelanggan);
+            _db.SaveChanges();
         }
     }
 }

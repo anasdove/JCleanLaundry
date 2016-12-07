@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:35</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>12/06/2016 17:14:43</publishTime>
+      <publishTime>12/07/2016 08:18:34</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>12/06/2016 17:14:43</publishTime>
+      <publishTime>12/07/2016 08:18:34</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/08/2016 10:37:35</publishTime>
@@ -236,7 +236,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:09:59</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_cucian.js">
-      <publishTime>12/06/2016 17:17:24</publishTime>
+      <publishTime>12/07/2016 08:29:01</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
       <publishTime>11/08/2016 14:09:00</publishTime>
@@ -424,6 +424,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Transaksi/MenuUtama.cshtml">
       <publishTime>11/08/2016 13:47:15</publishTime>
     </File>
+    <File Include="Views/Transaksi/Modal/_ErrorModal.cshtml">
+      <publishTime>12/07/2016 08:22:55</publishTime>
+    </File>
     <File Include="Views/Transaksi/Pengambilan.cshtml">
       <publishTime>11/08/2016 12:50:07</publishTime>
     </File>
@@ -431,7 +434,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:50:10</publishTime>
     </File>
     <File Include="Views/Transaksi/Satuan.cshtml">
-      <publishTime>12/06/2016 16:36:56</publishTime>
+      <publishTime>12/07/2016 08:16:02</publishTime>
     </File>
     <File Include="Views/Transaksi/Status.cshtml">
       <publishTime>11/08/2016 12:50:13</publishTime>

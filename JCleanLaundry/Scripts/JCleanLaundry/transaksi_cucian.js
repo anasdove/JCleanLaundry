@@ -126,7 +126,7 @@
             _updateTotalBayar();
         }
 
-        var prosesTransaksiSatuan = function (url) {
+        var prosesTransaksiSatuan = function (url, cetakUrl) {
 
             var uangMuka = $("#UangMuka").val();
 
@@ -154,7 +154,7 @@
             }
 
             // Panggil Controller
-            _simpanTransaksi(url);
+            _simpanTransaksi(url, cetakUrl);
         }
 
         var _setTabelBarangColumnDefinition = function () {
@@ -290,7 +290,7 @@
             return benar;
         }
 
-        var _simpanTransaksi = function (url) {
+        var _simpanTransaksi = function (url, cetakUrl) {
 
             var transaksiData = [];
 
@@ -320,7 +320,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
 
-                    
+                    window.location.href = cetakUrl.replace('__id__', data);
                 }
             };
 
