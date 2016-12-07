@@ -40,7 +40,7 @@ public partial class JCleanLaundryEntities : DbContext
 
     public virtual DbSet<Staff> Staffs { get; set; }
 
-    public virtual DbSet<Counter> Counters1 { get; set; }
+    public virtual DbSet<Counter> Counters { get; set; }
 
     public virtual DbSet<StaffCounter> StaffCounters { get; set; }
 

@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using System;
+using Microsoft.AspNet.Identity;
+using System.Data.Entity.Validation;
 
 namespace JCleanLaundry.Controllers
 {
@@ -149,8 +152,7 @@ namespace JCleanLaundry.Controllers
                 SimpanDataPelanggan(prosesSatuan.Pelanggan);
             }
 
-            // Simpan Transaksi:
-            var kodeTransaksiSatuan = "S1001";
+            var kodeTransaksiSatuan = SimpanTransaksiSatuan(prosesSatuan);
 
             return Json(kodeTransaksiSatuan, JsonRequestBehavior.AllowGet);
         }
@@ -158,7 +160,48 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CetakTransaksi(string kodeTransaksi)
         {
-            return View();
+            var transaksiSatuan = _db.TransaksiSatuans.Where(x => x.KodeTransaksiSatuan == kodeTransaksi).SingleOrDefault();
+
+            var model = new ProsesSatuanViewModel
+            {
+                KodeTransaksi   = transaksiSatuan.KodeTransaksiSatuan,
+                Pelanggan = new PelangganViewModel
+                {
+                    NoKtp   = transaksiSatuan.PelangganFK.NoKtp,
+                    Nama    = transaksiSatuan.PelangganFK.Nama,
+                    Alamat  = transaksiSatuan.PelangganFK.Alamat,
+                    Hp      = transaksiSatuan.PelangganFK.Hp
+                },
+                UangMuka        = transaksiSatuan.UangMuka,
+                TotalBayar      = transaksiSatuan.TotalBayar,
+                NamaCounter     = transaksiSatuan.CounterFK.Nama,
+                Staff           = transaksiSatuan.StaffFK.UserName,
+                TanggalMasuk    = transaksiSatuan.TanggalMasuk,
+                TanggalSelesai  = transaksiSatuan.TanggalKeluar
+            };
+            
+            var details = new List<ProsesSatuanDetailViewModel>();
+
+            foreach (var detil in transaksiSatuan.TransaksiSatuanDetilFK)
+            {
+                var detailModel = new ProsesSatuanDetailViewModel
+                {
+                    Jumlah      = detil.Jumlah,
+                    KodeBarang  = detil.KodeBarang,
+                    Barang      = new BarangViewModel
+                    {
+                        Nama            = detil.BarangFK.Nama,
+                        TipeCuciNama    = detil.BarangFK.TipeCuciFK.Tipe,
+                        Harga           = detil.BarangFK.Harga
+                    }
+                };
+
+                details.Add(detailModel);
+            }
+
+            model.Detail = details;
+
+            return View(model);
         }
 
         private void SimpanDataPelanggan(PelangganViewModel model)
@@ -173,6 +216,99 @@ namespace JCleanLaundry.Controllers
 
             _db.Pelanggans.Add(pelanggan);
             _db.SaveChanges();
+        }
+
+        private string SimpanTransaksiSatuan(ProsesSatuanViewModel model)
+        {
+            var pelanggan = _db.Pelanggans.Where(x => x.NoKtp == model.Pelanggan.NoKtp).SingleOrDefault();
+
+            if (pelanggan == null)
+            {
+                return string.Empty;
+            }
+
+            var userId = User.Identity.GetUserId();
+
+            var staff = _db.Staffs.Where(x => x.Id == userId).SingleOrDefault();
+
+            if (staff == null)
+            {
+                return string.Empty;
+            }
+
+            var counter = _db.StaffCounters.Where(x => x.KodeStaff == userId).SingleOrDefault();
+
+            if (counter == null)
+            {
+                return string.Empty;
+            }
+
+            var kodeTransaksi = string.Format("TS-{0}-{1}", counter.KodeCounter, DateTime.Now.ToString("yyMMddHHmmss"));
+
+            var totalBayar = HitungTotalBayar(model);
+
+            var transaksiSatuan = new TransaksiSatuan
+            {
+                KodeTransaksiSatuan = kodeTransaksi,
+                KodeCounter         = counter.KodeCounter,
+                KodeStaff           = userId,
+                TanggalMasuk        = DateTime.Now,
+                TanggalKeluar       = DateTime.Now,
+                TotalBayar          = totalBayar,
+                KodePelanggan       = pelanggan.Id,
+                UangMuka            = model.UangMuka,
+                StatusTransaksi     = "Diterima"
+            };
+
+            transaksiSatuan.TransaksiSatuanDetilFK = new List<TransaksiSatuanDetil>();
+
+            foreach (var detail in model.Detail)
+            {
+                var detil = new TransaksiSatuanDetil
+                {
+                    KodeTransaksiSatuan = kodeTransaksi,
+                    KodeBarang          = detail.KodeBarang,
+                    Jumlah              = detail.Jumlah
+                };
+
+                transaksiSatuan.TransaksiSatuanDetilFK.Add(detil);
+            }
+
+            try
+            {
+                _db.TransaksiSatuans.Add(transaksiSatuan);
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+            }
+            
+
+            return kodeTransaksi;
+        }
+
+        private decimal HitungTotalBayar(ProsesSatuanViewModel model)
+        {
+            var total = 0;
+
+            foreach (var detail in model.Detail)
+            {
+                var harga = _db.Barangs.Where(x => x.Id == detail.KodeBarang).SingleOrDefault().Harga;
+
+                total += detail.Jumlah * harga;
+            }
+
+            return total;
         }
     }
 }

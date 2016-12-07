@@ -320,6 +320,13 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
 
+                    if (data == "") {
+
+                        _tampilkanPeringatan("Gagal melakukan transaksi satuan. Coba lagi");
+
+                        return;
+                    }
+
                     window.location.href = cetakUrl.replace('__id__', data);
                 }
             };
