@@ -17,7 +17,7 @@ namespace JCleanLaundry.Controllers
         
         public ActionResult Index()
         {
-            var model = _db.PelangganDbSet.Select(x => new PelangganViewModel
+            var model = _db.Pelanggans.Select(x => new PelangganViewModel
             {
                 Alamat = x.Alamat,
                 Hp = x.Hp,
@@ -33,7 +33,7 @@ namespace JCleanLaundry.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var pelanggan = _db.PelangganDbSet.Find(id);
+            var pelanggan = _db.Pelanggans.Find(id);
 
             if (pelanggan == null) return HttpNotFound();
 
@@ -68,7 +68,7 @@ namespace JCleanLaundry.Controllers
                 NoKtp = model.NoKtp
             };
 
-            _db.PelangganDbSet.Add(pelanggan);
+            _db.Pelanggans.Add(pelanggan);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -78,7 +78,7 @@ namespace JCleanLaundry.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var pelanggan = _db.PelangganDbSet.Find(id);
+            var pelanggan = _db.Pelanggans.Find(id);
 
             if (pelanggan == null) return HttpNotFound();
 
@@ -120,7 +120,7 @@ namespace JCleanLaundry.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var pelanggan = _db.PelangganDbSet.Find(id);
+            var pelanggan = _db.Pelanggans.Find(id);
 
             if (pelanggan == null) return HttpNotFound();
 
@@ -132,9 +132,9 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var pelanggan = _db.PelangganDbSet.Find(id);
+            var pelanggan = _db.Pelanggans.Find(id);
 
-            _db.PelangganDbSet.Remove(pelanggan);
+            _db.Pelanggans.Remove(pelanggan);
             _db.SaveChanges();
 
             return RedirectToAction("Index");

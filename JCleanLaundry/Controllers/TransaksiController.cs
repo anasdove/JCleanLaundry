@@ -36,9 +36,9 @@ namespace JCleanLaundry.Controllers
                 Pelanggan = new PelangganViewModel()
             };
 
-            ViewBag.TipeCucian = new SelectList(_db.TipeCuciDbSet.OrderBy(x => x.Id), "Id", "Tipe");
+            ViewBag.TipeCucian = new SelectList(_db.TipeCucis.OrderBy(x => x.Id), "Id", "Tipe");
 
-            var daftarBarang = _db.BarangDbSet.Where(x => x.TipeCuciId == 1).Select(x => new BarangViewModel
+            var daftarBarang = _db.Barangs.Where(x => x.TipeCuciId == 1).Select(x => new BarangViewModel
             {
                 Id = x.Id,
                 Nama = x.Nama,
@@ -86,14 +86,14 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CekNoPelanggan(string noHp)
         {
-            var pelanggan = _db.PelangganDbSet.FirstOrDefault(x => x.Hp == noHp);
+            var pelanggan = _db.Pelanggans.FirstOrDefault(x => x.Hp == noHp);
             return Json(new { noHpAda = pelanggan != null, pelanggan }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public ActionResult TampilBarang(int tipeCuciId)
         {
-            var daftarBarang = _db.BarangDbSet.Where(x => x.TipeCuciId == tipeCuciId).Select(x => new BarangViewModel{
+            var daftarBarang = _db.Barangs.Where(x => x.TipeCuciId == tipeCuciId).Select(x => new BarangViewModel{
                                                                                                        Id = x.Id,
                                                                                                        Nama = x.Nama
                                                                                                     }).ToList();
@@ -108,7 +108,7 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CariHarga(int kodeBarang)
         {
-            var daftarBarang = _db.BarangDbSet.Where(x => x.Id == kodeBarang).SingleOrDefault();
+            var daftarBarang = _db.Barangs.Where(x => x.Id == kodeBarang).SingleOrDefault();
 
             return Json(daftarBarang.Harga, JsonRequestBehavior.AllowGet);
         }
@@ -142,7 +142,7 @@ namespace JCleanLaundry.Controllers
                 Detail      = daftarDetail
             };
 
-            var pelangganAda = _db.PelangganDbSet.Where(x => x.NoKtp == prosesSatuan.Pelanggan.NoKtp).Any();
+            var pelangganAda = _db.Pelanggans.Where(x => x.NoKtp == prosesSatuan.Pelanggan.NoKtp).Any();
 
             if (!pelangganAda)
             {
@@ -171,7 +171,7 @@ namespace JCleanLaundry.Controllers
                 NoKtp = model.NoKtp
             };
 
-            _db.PelangganDbSet.Add(pelanggan);
+            _db.Pelanggans.Add(pelanggan);
             _db.SaveChanges();
         }
     }

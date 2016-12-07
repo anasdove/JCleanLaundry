@@ -19,7 +19,7 @@ namespace JCleanLaundry.Controllers
 
         public ActionResult Index()
         {
-            var models = _db.BarangDbSet.Include(x => x.TipeCuciFK).OrderBy(x => x.Nama).Select(x => new BarangViewModel
+            var models = _db.Barangs.Include(x => x.TipeCuciFK).OrderBy(x => x.Nama).Select(x => new BarangViewModel
             {
                 Harga = x.Harga,
                 Id = x.Id,
@@ -37,7 +37,7 @@ namespace JCleanLaundry.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var barang = _db.BarangDbSet.Find(id);
+            var barang = _db.Barangs.Find(id);
             if (barang == null) return HttpNotFound();
             return View(barang);
         }
@@ -45,7 +45,7 @@ namespace JCleanLaundry.Controllers
         // GET: Barang/Create
         public ActionResult Create()
         {
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe");
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe");
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace JCleanLaundry.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
+                ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe", model.TipeCuciId);
                 return View(model);
             }
 
@@ -66,7 +66,7 @@ namespace JCleanLaundry.Controllers
                 TipeCuciId = model.TipeCuciId
             };
 
-            _db.BarangDbSet.Add(barang);
+            _db.Barangs.Add(barang);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -76,7 +76,7 @@ namespace JCleanLaundry.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var barang = _db.BarangDbSet.Find(id);
+            var barang = _db.Barangs.Find(id);
 
             if (barang == null)
             {
@@ -91,7 +91,7 @@ namespace JCleanLaundry.Controllers
                 TipeCuciId = barang.TipeCuciId
             };
 
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", barang.TipeCuciId);
+            ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe", barang.TipeCuciId);
 
             return View(model);
         }
@@ -102,7 +102,7 @@ namespace JCleanLaundry.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.TipeCuciId = new SelectList(_db.TipeCuciDbSet, "Id", "Tipe", model.TipeCuciId);
+                ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe", model.TipeCuciId);
                 return View(model);
             }
 
@@ -128,7 +128,7 @@ namespace JCleanLaundry.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var barang = _db.BarangDbSet.Find(id);
+            var barang = _db.Barangs.Find(id);
 
             if (barang == null)
             {
@@ -143,9 +143,9 @@ namespace JCleanLaundry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var barang = _db.BarangDbSet.Find(id);
+            var barang = _db.Barangs.Find(id);
 
-            _db.BarangDbSet.Remove(barang);
+            _db.Barangs.Remove(barang);
 
             _db.SaveChanges();
 

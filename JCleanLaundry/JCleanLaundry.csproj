@@ -177,6 +177,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PelangganController.cs" />
     <Compile Include="Controllers\TransaksiController.cs" />
+    <Compile Include="Counter.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,8 +211,20 @@
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffCounter.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="TipeCuci.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransaksiSatuan.cs">
+      <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransaksiSatuanDetil.cs">
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

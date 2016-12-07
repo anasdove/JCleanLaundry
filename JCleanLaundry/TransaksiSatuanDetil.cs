@@ -15,27 +15,22 @@ namespace JCleanLaundry
 using System;
     using System.Collections.Generic;
     
-public partial class TipeCuci
+public partial class TransaksiSatuanDetil
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public TipeCuci()
-    {
+    public int KodeTransaksiSatuanDetil { get; set; }
 
-        this.BarangFK = new HashSet<Barang>();
+    public string KodeTransaksiSatuan { get; set; }
 
-    }
+    public int KodeBarang { get; set; }
 
-
-    public int Id { get; set; }
-
-    public string Tipe { get; set; }
+    public int Jumlah { get; set; }
 
 
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual Barang BarangFK { get; set; }
 
-    public virtual ICollection<Barang> BarangFK { get; set; }
+    public virtual TransaksiSatuan TransaksiSatuanFK { get; set; }
 
 }
 

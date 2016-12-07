@@ -4,7 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JCleanLaundryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JCleanLaundryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="BARANG">
           <Key>
             <PropertyRef Name="Id" />
@@ -13,6 +30,13 @@
           <Property Name="Nama" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Harga" Type="int" Nullable="false" />
           <Property Name="TipeCuciId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNTER">
+          <Key>
+            <PropertyRef Name="Kode_Counter" />
+          </Key>
+          <Property Name="Kode_Counter" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nama" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="PELANGGAN">
           <Key>
@@ -24,6 +48,14 @@
           <Property Name="NoKtp" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Alamat" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="STAFF_COUNTER">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Kode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kode_Counter" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Kode_Staff" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
         <EntityType Name="TIPE_CUCI">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,7 +63,30 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Tipe" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK__BARANG__TipeCuci__60A75C0F">
+        <EntityType Name="TRANSAKSI_SATUAN">
+          <Key>
+            <PropertyRef Name="Kode_Transaksi_Satuan" />
+          </Key>
+          <Property Name="Kode_Transaksi_Satuan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Kode_Counter" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Kode_Staff" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Tanggal_Masuk" Type="datetime" Nullable="false" />
+          <Property Name="Tanggal_Keluar" Type="datetime" Nullable="false" />
+          <Property Name="Total_Bayar" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Kode_Pelanggan" Type="int" Nullable="false" />
+          <Property Name="Uang_Muka" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Status_Transaksi" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANSAKSI_SATUAN_DETIL">
+          <Key>
+            <PropertyRef Name="Kode_Transaksi_Satuan_Detil" />
+          </Key>
+          <Property Name="Kode_Transaksi_Satuan_Detil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kode_Transaksi_Satuan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Kode_Barang" Type="int" Nullable="false" />
+          <Property Name="Jumlah" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__BARANG__TipeCuci__6E01572D">
           <End Role="TIPE_CUCI" Type="Self.TIPE_CUCI" Multiplicity="1" />
           <End Role="BARANG" Type="Self.BARANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -43,13 +98,130 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="STAFF_COUNTER_COUNTER_FK">
+          <End Role="COUNTER" Type="Self.COUNTER" Multiplicity="1" />
+          <End Role="STAFF_COUNTER" Type="Self.STAFF_COUNTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTER">
+              <PropertyRef Name="Kode_Counter" />
+            </Principal>
+            <Dependent Role="STAFF_COUNTER">
+              <PropertyRef Name="Kode_Counter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_COUNTER_STAFF_FK">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="STAFF_COUNTER" Type="Self.STAFF_COUNTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STAFF_COUNTER">
+              <PropertyRef Name="Kode_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_COUNTER_FK">
+          <End Role="COUNTER" Type="Self.COUNTER" Multiplicity="1" />
+          <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTER">
+              <PropertyRef Name="Kode_Counter" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="Kode_Counter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_DETIL_BARANG_FK">
+          <End Role="BARANG" Type="Self.BARANG" Multiplicity="1" />
+          <End Role="TRANSAKSI_SATUAN_DETIL" Type="Self.TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BARANG">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN_DETIL">
+              <PropertyRef Name="Kode_Barang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
+          <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="1" />
+          <End Role="TRANSAKSI_SATUAN_DETIL" Type="Self.TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="Kode_Transaksi_Satuan" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN_DETIL">
+              <PropertyRef Name="Kode_Transaksi_Satuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_PELANGGAN_FK">
+          <End Role="PELANGGAN" Type="Self.PELANGGAN" Multiplicity="1" />
+          <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PELANGGAN">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="Kode_Pelanggan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_STAFF_FK">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="Kode_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="JCleanLaundryModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BARANG" EntityType="Self.BARANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUNTER" EntityType="Self.COUNTER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PELANGGAN" EntityType="Self.PELANGGAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STAFF_COUNTER" EntityType="Self.STAFF_COUNTER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPE_CUCI" EntityType="Self.TIPE_CUCI" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BARANG__TipeCuci__60A75C0F" Association="Self.FK__BARANG__TipeCuci__60A75C0F">
+          <EntitySet Name="TRANSAKSI_SATUAN" EntityType="Self.TRANSAKSI_SATUAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSAKSI_SATUAN_DETIL" EntityType="Self.TRANSAKSI_SATUAN_DETIL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BARANG__TipeCuci__6E01572D" Association="Self.FK__BARANG__TipeCuci__6E01572D">
             <End Role="TIPE_CUCI" EntitySet="TIPE_CUCI" />
             <End Role="BARANG" EntitySet="BARANG" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_COUNTER_COUNTER_FK" Association="Self.STAFF_COUNTER_COUNTER_FK">
+            <End Role="COUNTER" EntitySet="COUNTER" />
+            <End Role="STAFF_COUNTER" EntitySet="STAFF_COUNTER" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_COUNTER_STAFF_FK" Association="Self.STAFF_COUNTER_STAFF_FK">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="STAFF_COUNTER" EntitySet="STAFF_COUNTER" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_COUNTER_FK" Association="Self.TRANSAKSI_SATUAN_COUNTER_FK">
+            <End Role="COUNTER" EntitySet="COUNTER" />
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_BARANG_FK" Association="Self.TRANSAKSI_SATUAN_DETIL_BARANG_FK">
+            <End Role="BARANG" EntitySet="BARANG" />
+            <End Role="TRANSAKSI_SATUAN_DETIL" EntitySet="TRANSAKSI_SATUAN_DETIL" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK" Association="Self.TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
+            <End Role="TRANSAKSI_SATUAN_DETIL" EntitySet="TRANSAKSI_SATUAN_DETIL" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_PELANGGAN_FK" Association="Self.TRANSAKSI_SATUAN_PELANGGAN_FK">
+            <End Role="PELANGGAN" EntitySet="PELANGGAN" />
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_STAFF_FK" Association="Self.TRANSAKSI_SATUAN_STAFF_FK">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -64,6 +236,39 @@
             <End Role="TIPE_CUCI" EntitySet="TipeCucis" />
             <End Role="BARANG" EntitySet="Barangs1" />
           </AssociationSet>
+          <EntitySet Name="Staffs" EntityType="JCleanLaundryModel.Staff" />
+          <EntitySet Name="Counters1" EntityType="JCleanLaundryModel.Counter" />
+          <EntitySet Name="StaffCounters" EntityType="JCleanLaundryModel.StaffCounter" />
+          <EntitySet Name="TransaksiSatuans" EntityType="JCleanLaundryModel.TransaksiSatuan" />
+          <EntitySet Name="TransaksiSatuanDetils" EntityType="JCleanLaundryModel.TransaksiSatuanDetil" />
+          <AssociationSet Name="STAFF_COUNTER_STAFF_FK" Association="JCleanLaundryModel.STAFF_COUNTER_STAFF_FK">
+            <End Role="AspNetUser" EntitySet="Staffs" />
+            <End Role="STAFF_COUNTER" EntitySet="StaffCounters" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_STAFF_FK" Association="JCleanLaundryModel.TRANSAKSI_SATUAN_STAFF_FK">
+            <End Role="AspNetUser" EntitySet="Staffs" />
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TransaksiSatuans" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_BARANG_FK" Association="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_BARANG_FK">
+            <End Role="Barang" EntitySet="Barangs1" />
+            <End Role="TRANSAKSI_SATUAN_DETIL" EntitySet="TransaksiSatuanDetils" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_COUNTER_COUNTER_FK" Association="JCleanLaundryModel.STAFF_COUNTER_COUNTER_FK">
+            <End Role="COUNTER" EntitySet="Counters1" />
+            <End Role="STAFF_COUNTER" EntitySet="StaffCounters" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_COUNTER_FK" Association="JCleanLaundryModel.TRANSAKSI_SATUAN_COUNTER_FK">
+            <End Role="COUNTER" EntitySet="Counters1" />
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TransaksiSatuans" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_PELANGGAN_FK" Association="JCleanLaundryModel.TRANSAKSI_SATUAN_PELANGGAN_FK">
+            <End Role="Pelanggan" EntitySet="Pelanggans1" />
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TransaksiSatuans" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK" Association="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
+            <End Role="TRANSAKSI_SATUAN" EntitySet="TransaksiSatuans" />
+            <End Role="TRANSAKSI_SATUAN_DETIL" EntitySet="TransaksiSatuanDetils" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Barang">
           <Key>
@@ -74,6 +279,7 @@
           <Property Name="Harga" Type="Int32" Nullable="false" />
           <Property Name="TipeCuciId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TipeCuciFK" Relationship="JCleanLaundryModel.FK__BARANG__TipeCuci__60A75C0F" FromRole="BARANG" ToRole="TIPE_CUCI" />
+          <NavigationProperty Name="TransaksiSatuanDetilFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_BARANG_FK" FromRole="Barang" ToRole="TRANSAKSI_SATUAN_DETIL" />
         </EntityType>
         <EntityType Name="Pelanggan">
           <Key>
@@ -84,6 +290,7 @@
           <Property Name="Hp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NoKtp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Alamat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TransaksiSatuanFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_PELANGGAN_FK" FromRole="Pelanggan" ToRole="TRANSAKSI_SATUAN" />
         </EntityType>
         <EntityType Name="TipeCuci">
           <Key>
@@ -102,6 +309,157 @@
             </Principal>
             <Dependent Role="BARANG">
               <PropertyRef Name="TipeCuciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StaffCounterFK" Relationship="JCleanLaundryModel.STAFF_COUNTER_STAFF_FK" FromRole="AspNetUser" ToRole="STAFF_COUNTER" />
+          <NavigationProperty Name="TransaksiSatuanFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_STAFF_FK" FromRole="AspNetUser" ToRole="TRANSAKSI_SATUAN" />
+        </EntityType>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="KodeCounter" />
+          </Key>
+          <Property Name="KodeCounter" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StaffCounterFK" Relationship="JCleanLaundryModel.STAFF_COUNTER_COUNTER_FK" FromRole="COUNTER" ToRole="STAFF_COUNTER" />
+          <NavigationProperty Name="TransaksiSatuanFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_COUNTER_FK" FromRole="COUNTER" ToRole="TRANSAKSI_SATUAN" />
+          <Property Name="Nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StaffCounter">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Kode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KodeCounter" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KodeStaff" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StaffFK" Relationship="JCleanLaundryModel.STAFF_COUNTER_STAFF_FK" FromRole="STAFF_COUNTER" ToRole="AspNetUser" />
+          <NavigationProperty Name="CounterFK" Relationship="JCleanLaundryModel.STAFF_COUNTER_COUNTER_FK" FromRole="STAFF_COUNTER" ToRole="COUNTER" />
+        </EntityType>
+        <EntityType Name="TransaksiSatuan">
+          <Key>
+            <PropertyRef Name="KodeTransaksiSatuan" />
+          </Key>
+          <Property Name="KodeTransaksiSatuan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KodeCounter" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KodeStaff" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TanggalMasuk" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TanggalKeluar" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalBayar" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="KodePelanggan" Type="Int32" Nullable="false" />
+          <Property Name="UangMuka" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="StatusTransaksi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StaffFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_STAFF_FK" FromRole="TRANSAKSI_SATUAN" ToRole="AspNetUser" />
+          <NavigationProperty Name="CounterFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_COUNTER_FK" FromRole="TRANSAKSI_SATUAN" ToRole="COUNTER" />
+          <NavigationProperty Name="PelangganFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_PELANGGAN_FK" FromRole="TRANSAKSI_SATUAN" ToRole="Pelanggan" />
+          <NavigationProperty Name="TransaksiSatuanDetilFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK" FromRole="TRANSAKSI_SATUAN" ToRole="TRANSAKSI_SATUAN_DETIL" />
+        </EntityType>
+        <EntityType Name="TransaksiSatuanDetil">
+          <Key>
+            <PropertyRef Name="KodeTransaksiSatuanDetil" />
+          </Key>
+          <Property Name="KodeTransaksiSatuanDetil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KodeTransaksiSatuan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KodeBarang" Type="Int32" Nullable="false" />
+          <Property Name="Jumlah" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BarangFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_BARANG_FK" FromRole="TRANSAKSI_SATUAN_DETIL" ToRole="Barang" />
+          <NavigationProperty Name="TransaksiSatuanFK" Relationship="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK" FromRole="TRANSAKSI_SATUAN_DETIL" ToRole="TRANSAKSI_SATUAN" />
+        </EntityType>
+        <Association Name="STAFF_COUNTER_STAFF_FK">
+          <End Type="JCleanLaundryModel.Staff" Role="AspNetUser" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.StaffCounter" Role="STAFF_COUNTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STAFF_COUNTER">
+              <PropertyRef Name="KodeStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_STAFF_FK">
+          <End Type="JCleanLaundryModel.Staff" Role="AspNetUser" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.TransaksiSatuan" Role="TRANSAKSI_SATUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="KodeStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_DETIL_BARANG_FK">
+          <End Type="JCleanLaundryModel.Barang" Role="Barang" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.TransaksiSatuanDetil" Role="TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN_DETIL">
+              <PropertyRef Name="KodeBarang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_COUNTER_COUNTER_FK">
+          <End Type="JCleanLaundryModel.Counter" Role="COUNTER" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.StaffCounter" Role="STAFF_COUNTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTER">
+              <PropertyRef Name="KodeCounter" />
+            </Principal>
+            <Dependent Role="STAFF_COUNTER">
+              <PropertyRef Name="KodeCounter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_COUNTER_FK">
+          <End Type="JCleanLaundryModel.Counter" Role="COUNTER" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.TransaksiSatuan" Role="TRANSAKSI_SATUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTER">
+              <PropertyRef Name="KodeCounter" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="KodeCounter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_PELANGGAN_FK">
+          <End Type="JCleanLaundryModel.Pelanggan" Role="Pelanggan" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.TransaksiSatuan" Role="TRANSAKSI_SATUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pelanggan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="KodePelanggan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
+          <End Type="JCleanLaundryModel.TransaksiSatuan" Role="TRANSAKSI_SATUAN" Multiplicity="1" />
+          <End Type="JCleanLaundryModel.TransaksiSatuanDetil" Role="TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSAKSI_SATUAN">
+              <PropertyRef Name="KodeTransaksiSatuan" />
+            </Principal>
+            <Dependent Role="TRANSAKSI_SATUAN_DETIL">
+              <PropertyRef Name="KodeTransaksiSatuan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -137,6 +495,66 @@
               <MappingFragment StoreEntitySet="TIPE_CUCI">
                 <ScalarProperty Name="Tipe" ColumnName="Tipe" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="JCleanLaundryModel.Staff">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counters1">
+            <EntityTypeMapping TypeName="JCleanLaundryModel.Counter">
+              <MappingFragment StoreEntitySet="COUNTER">
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="KodeCounter" ColumnName="Kode_Counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffCounters">
+            <EntityTypeMapping TypeName="JCleanLaundryModel.StaffCounter">
+              <MappingFragment StoreEntitySet="STAFF_COUNTER">
+                <ScalarProperty Name="KodeStaff" ColumnName="Kode_Staff" />
+                <ScalarProperty Name="KodeCounter" ColumnName="Kode_Counter" />
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransaksiSatuans">
+            <EntityTypeMapping TypeName="JCleanLaundryModel.TransaksiSatuan">
+              <MappingFragment StoreEntitySet="TRANSAKSI_SATUAN">
+                <ScalarProperty Name="StatusTransaksi" ColumnName="Status_Transaksi" />
+                <ScalarProperty Name="UangMuka" ColumnName="Uang_Muka" />
+                <ScalarProperty Name="KodePelanggan" ColumnName="Kode_Pelanggan" />
+                <ScalarProperty Name="TotalBayar" ColumnName="Total_Bayar" />
+                <ScalarProperty Name="TanggalKeluar" ColumnName="Tanggal_Keluar" />
+                <ScalarProperty Name="TanggalMasuk" ColumnName="Tanggal_Masuk" />
+                <ScalarProperty Name="KodeStaff" ColumnName="Kode_Staff" />
+                <ScalarProperty Name="KodeCounter" ColumnName="Kode_Counter" />
+                <ScalarProperty Name="KodeTransaksiSatuan" ColumnName="Kode_Transaksi_Satuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransaksiSatuanDetils">
+            <EntityTypeMapping TypeName="JCleanLaundryModel.TransaksiSatuanDetil">
+              <MappingFragment StoreEntitySet="TRANSAKSI_SATUAN_DETIL">
+                <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+                <ScalarProperty Name="KodeBarang" ColumnName="Kode_Barang" />
+                <ScalarProperty Name="KodeTransaksiSatuan" ColumnName="Kode_Transaksi_Satuan" />
+                <ScalarProperty Name="KodeTransaksiSatuanDetil" ColumnName="Kode_Transaksi_Satuan_Detil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

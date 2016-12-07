@@ -15,11 +15,11 @@ namespace JCleanLaundry
 using System;
     using System.Collections.Generic;
     
-public partial class Barang
+public partial class TransaksiSatuan
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Barang()
+    public TransaksiSatuan()
     {
 
         this.TransaksiSatuanDetilFK = new HashSet<TransaksiSatuanDetil>();
@@ -27,17 +27,31 @@ public partial class Barang
     }
 
 
-    public int Id { get; set; }
+    public string KodeTransaksiSatuan { get; set; }
 
-    public string Nama { get; set; }
+    public string KodeCounter { get; set; }
 
-    public int Harga { get; set; }
+    public string KodeStaff { get; set; }
 
-    public int TipeCuciId { get; set; }
+    public System.DateTime TanggalMasuk { get; set; }
+
+    public System.DateTime TanggalKeluar { get; set; }
+
+    public decimal TotalBayar { get; set; }
+
+    public int KodePelanggan { get; set; }
+
+    public decimal UangMuka { get; set; }
+
+    public string StatusTransaksi { get; set; }
 
 
 
-    public virtual TipeCuci TipeCuciFK { get; set; }
+    public virtual Staff StaffFK { get; set; }
+
+    public virtual Counter CounterFK { get; set; }
+
+    public virtual Pelanggan PelangganFK { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

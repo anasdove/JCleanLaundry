@@ -15,29 +15,49 @@ namespace JCleanLaundry
 using System;
     using System.Collections.Generic;
     
-public partial class Pelanggan
+public partial class Staff
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Pelanggan()
+    public Staff()
     {
+
+        this.StaffCounterFK = new HashSet<StaffCounter>();
 
         this.TransaksiSatuanFK = new HashSet<TransaksiSatuan>();
 
     }
 
 
-    public int Id { get; set; }
+    public string Id { get; set; }
 
-    public string Nama { get; set; }
+    public string Email { get; set; }
 
-    public string Hp { get; set; }
+    public bool EmailConfirmed { get; set; }
 
-    public string NoKtp { get; set; }
+    public string PasswordHash { get; set; }
 
-    public string Alamat { get; set; }
+    public string SecurityStamp { get; set; }
+
+    public string PhoneNumber { get; set; }
+
+    public bool PhoneNumberConfirmed { get; set; }
+
+    public bool TwoFactorEnabled { get; set; }
+
+    public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
+
+    public bool LockoutEnabled { get; set; }
+
+    public int AccessFailedCount { get; set; }
+
+    public string UserName { get; set; }
 
 
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<StaffCounter> StaffCounterFK { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

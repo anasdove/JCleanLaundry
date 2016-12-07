@@ -5,10 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2df449b0485f494abb12b85744f6454b" Name="Diagram1" >
-        <EntityTypeShape EntityType="JCleanLaundryModel.Barang" Width="1.5" PointX="3" PointY="0.875" />
-        <EntityTypeShape EntityType="JCleanLaundryModel.Pelanggan" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.Barang" Width="2.75" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.Pelanggan" Width="2.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="JCleanLaundryModel.TipeCuci" Width="1.5" PointX="0.75" PointY="1.125" />
         <AssociationConnector Association="JCleanLaundryModel.FK__BARANG__TipeCuci__60A75C0F" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.Staff" Width="2.375" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.Counter" Width="2" PointX="9.75" PointY="7.5" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.StaffCounter" Width="2.375" PointX="4.75" PointY="9.25" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.TransaksiSatuan" Width="3" PointX="4.125" PointY="4.75" />
+        <EntityTypeShape EntityType="JCleanLaundryModel.TransaksiSatuanDetil" Width="2.25" PointX="7.875" PointY="3.5" />
+        <AssociationConnector Association="JCleanLaundryModel.STAFF_COUNTER_STAFF_FK" />
+        <AssociationConnector Association="JCleanLaundryModel.TRANSAKSI_SATUAN_STAFF_FK" />
+        <AssociationConnector Association="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_BARANG_FK" />
+        <AssociationConnector Association="JCleanLaundryModel.STAFF_COUNTER_COUNTER_FK" />
+        <AssociationConnector Association="JCleanLaundryModel.TRANSAKSI_SATUAN_COUNTER_FK" />
+        <AssociationConnector Association="JCleanLaundryModel.TRANSAKSI_SATUAN_PELANGGAN_FK" />
+        <AssociationConnector Association="JCleanLaundryModel.TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
