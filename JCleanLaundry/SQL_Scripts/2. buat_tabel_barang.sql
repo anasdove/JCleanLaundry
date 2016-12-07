@@ -1,6 +1,33 @@
+-- BUAT TABEL [TIPE_CUCI]
+
+DROP TABLE [TIPE_CUCI]
+
+CREATE TABLE [TIPE_CUCI]
+(
+	Id		INT NOT NULL PRIMARY KEY,
+	Tipe	VARCHAR(100) NOT NULL
+)
+
 --TAMBAH TIPE CUCI
 INSERT INTO TIPE_CUCI VALUES(1, 'Laundry') 
 INSERT INTO TIPE_CUCI VALUES(2, 'Dry Clean') 
+
+
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+
+
+-- BUAT TABEL [BARANG]
+
+DROP TABLE [BARANG]
+
+CREATE TABLE [BARANG]
+(
+	Id				INT NOT NULL PRIMARY KEY IDENTITY, 
+	Nama			VARCHAR(100) NOT NULL,
+	Harga			INT NOT NULL,
+	TipeCuciId		INT NOT NULL references TIPE_CUCI(Id)
+)
 
 --TAMBAH BARANG
 INSERT INTO BARANG VALUES('Baby Seat/Car Seat', 50000, 1) 
@@ -26,4 +53,3 @@ INSERT INTO BARANG VALUES('Blouse Tangan Panjang', 16000 , 1)
 INSERT INTO BARANG VALUES('Blouse Tangan Panjang', 19000 , 2) 
 INSERT INTO BARANG VALUES('Blouse Batik', 20000 , 1) 
 INSERT INTO BARANG VALUES('Blouse Batik', 23000 , 2) 
-

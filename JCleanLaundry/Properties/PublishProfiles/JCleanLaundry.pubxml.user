@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:35</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>12/07/2016 08:18:34</publishTime>
+      <publishTime>12/07/2016 09:20:05</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>12/07/2016 08:18:34</publishTime>
+      <publishTime>12/07/2016 09:20:05</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/08/2016 10:37:35</publishTime>
@@ -236,7 +236,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:09:59</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_cucian.js">
-      <publishTime>12/07/2016 08:29:01</publishTime>
+      <publishTime>12/07/2016 09:17:36</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
       <publishTime>11/08/2016 14:09:00</publishTime>
@@ -415,6 +415,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Transaction/TambahBarang.cshtml">
       <publishTime>11/05/2016 15:32:07</publishTime>
     </File>
+    <File Include="Views/Transaksi/CetakTransaksi.cshtml">
+      <publishTime>12/07/2016 09:19:04</publishTime>
+    </File>
     <File Include="Views/Transaksi/JenisTransaksi.cshtml">
       <publishTime>11/08/2016 13:54:40</publishTime>
     </File>
@@ -434,7 +437,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:50:10</publishTime>
     </File>
     <File Include="Views/Transaksi/Satuan.cshtml">
-      <publishTime>12/07/2016 08:16:02</publishTime>
+      <publishTime>12/07/2016 09:12:38</publishTime>
     </File>
     <File Include="Views/Transaksi/Status.cshtml">
       <publishTime>11/08/2016 12:50:13</publishTime>
@@ -449,7 +452,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/08/2016 16:51:41</publishTime>
+      <publishTime>12/07/2016 09:21:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

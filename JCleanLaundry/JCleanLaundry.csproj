@@ -273,9 +273,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="SQL_Scripts\buat_tabel_pelanggan.sql" />
-    <Content Include="SQL_Scripts\buat_tabel_barang.sql" />
-    <Content Include="SQL_Scripts\tambah_barang.sql" />
+    <None Include="SQL_Scripts\7. buat_tabel_transaksi_satuan_detil.sql" />
+    <None Include="SQL_Scripts\6. buat_tabel_transaksi_satuan.sql" />
+    <None Include="SQL_Scripts\5. buat_tabel_staff_counter.sql" />
+    <None Include="SQL_Scripts\3. buat_tabel_counter.sql" />
+    <None Include="SQL_Scripts\4. buat_tabel_pelanggan.sql" />
+    <None Include="SQL_Scripts\2. buat_tabel_barang.sql" />
+    <None Include="SQL_Scripts\1. hapus_identity.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

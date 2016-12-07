@@ -98,7 +98,7 @@ namespace JCleanLaundry.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = "anasdove@gmail.com"};
+                var user = new ApplicationUser { UserName = model.Username, Email = string.Format("{0}@gmail.com", model.Username)};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
