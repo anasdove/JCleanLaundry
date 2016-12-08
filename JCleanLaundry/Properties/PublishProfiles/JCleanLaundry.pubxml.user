@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:35</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>12/08/2016 11:02:06</publishTime>
+      <publishTime>12/08/2016 13:34:46</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>12/08/2016 11:02:06</publishTime>
+      <publishTime>12/08/2016 13:34:46</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/08/2016 10:37:35</publishTime>
@@ -170,7 +170,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/08/2016 10:53:44</publishTime>
     </File>
     <File Include="Content/main.css">
-      <publishTime>11/08/2016 12:29:16</publishTime>
+      <publishTime>12/08/2016 12:45:20</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/08/2016 10:37:33</publishTime>
@@ -229,14 +229,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/Bootstrap/dataTables.bootstrap.min.js">
       <publishTime>10/17/2016 06:07:24</publishTime>
     </File>
+    <File Include="Scripts/JCleanLaundry/cek_satuan.js">
+      <publishTime>12/08/2016 13:33:46</publishTime>
+    </File>
     <File Include="Scripts/JCleanLaundry/cetak_transaksi.js">
-      <publishTime>12/08/2016 10:16:55</publishTime>
+      <publishTime>12/08/2016 12:51:20</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/cucibaru.js">
       <publishTime>11/06/2016 12:05:31</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/datatable-helper.js">
-      <publishTime>11/08/2016 16:30:23</publishTime>
+      <publishTime>12/08/2016 13:32:42</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/loading.js">
       <publishTime>11/08/2016 12:09:59</publishTime>
@@ -245,7 +248,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/07/2016 13:42:56</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
-      <publishTime>12/07/2016 13:42:12</publishTime>
+      <publishTime>12/08/2016 12:41:55</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>11/08/2016 10:37:33</publishTime>
@@ -281,7 +284,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/08/2016 10:10:54</publishTime>
+      <publishTime>12/08/2016 12:51:06</publishTime>
     </File>
     <File Include="SQL_Scripts/buat_tabel_barang.sql">
       <publishTime>11/08/2016 10:37:34</publishTime>
@@ -440,7 +443,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:50:07</publishTime>
     </File>
     <File Include="Views/Transaksi/Pengecekan.cshtml">
-      <publishTime>11/08/2016 12:50:10</publishTime>
+      <publishTime>12/08/2016 13:00:56</publishTime>
     </File>
     <File Include="Views/Transaksi/Satuan.cshtml">
       <publishTime>12/07/2016 09:12:38</publishTime>
@@ -458,7 +461,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/08/2016 11:02:26</publishTime>
+      <publishTime>12/08/2016 13:35:56</publishTime>
     </File>
   </ItemGroup>
 </Project>

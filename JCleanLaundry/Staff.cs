@@ -24,12 +24,14 @@ public partial class Staff
 
         this.StaffCounterFK = new HashSet<StaffCounter>();
 
+        this.TransaksiSatuanDetilFK = new HashSet<TransaksiSatuanDetil>();
+
         this.TransaksiSatuanFK = new HashSet<TransaksiSatuan>();
 
     }
 
 
-    public string Id { get; set; }
+    public string Kode { get; set; }
 
     public string Email { get; set; }
 
@@ -58,6 +60,10 @@ public partial class Staff
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<StaffCounter> StaffCounterFK { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<TransaksiSatuanDetil> TransaksiSatuanDetilFK { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

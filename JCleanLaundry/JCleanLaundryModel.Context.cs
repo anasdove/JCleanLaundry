@@ -32,17 +32,17 @@ public partial class JCleanLaundryEntities : DbContext
     }
 
 
-    public virtual DbSet<Barang> Barangs { get; set; }
-
-    public virtual DbSet<Pelanggan> Pelanggans { get; set; }
-
-    public virtual DbSet<TipeCuci> TipeCucis { get; set; }
-
     public virtual DbSet<Staff> Staffs { get; set; }
+
+    public virtual DbSet<Barang> Barangs { get; set; }
 
     public virtual DbSet<Counter> Counters { get; set; }
 
+    public virtual DbSet<Pelanggan> Pelanggans { get; set; }
+
     public virtual DbSet<StaffCounter> StaffCounters { get; set; }
+
+    public virtual DbSet<TipeCuci> TipeCucis { get; set; }
 
     public virtual DbSet<TransaksiSatuan> TransaksiSatuans { get; set; }
 

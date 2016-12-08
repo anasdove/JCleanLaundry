@@ -39,19 +39,19 @@ namespace JCleanLaundry.Controllers
                 Pelanggan = new PelangganViewModel()
             };
 
-            ViewBag.TipeCucian = new SelectList(_db.TipeCucis.OrderBy(x => x.Id), "Id", "Tipe");
+            ViewBag.KodeTipeCuci = new SelectList(_db.TipeCucis.OrderBy(x => x.Kode), "Kode", "Tipe");
 
-            var daftarBarang = _db.Barangs.Where(x => x.TipeCuciId == 1).Select(x => new BarangViewModel
+            var daftarBarang = _db.Barangs.Where(x => x.KodeTipeCuci == 1).Select(x => new BarangViewModel
             {
-                Id = x.Id,
-                Nama = x.Nama,
-                Harga = x.Harga,
-                TipeCuciId = x.TipeCuciId
+                Kode            = x.Kode,
+                Nama            = x.Nama,
+                Harga           = x.Harga,
+                KodeTipeCuci    = x.KodeTipeCuci
             }).ToList();
 
-            daftarBarang.Insert(0, new BarangViewModel { Id = 0, Nama = "-- Pilih Barang --" });
+            daftarBarang.Insert(0, new BarangViewModel { Kode = 0, Nama = "-- Pilih Barang --" });
 
-            ViewBag.BarangId = new SelectList(daftarBarang, "Id", "Nama");
+            ViewBag.KodeBarang = new SelectList(daftarBarang, "Kode", "Nama");
 
             return View(model);
         }
@@ -100,16 +100,17 @@ namespace JCleanLaundry.Controllers
         }
 
         [HttpGet]
-        public ActionResult TampilBarang(int tipeCuciId)
+        public ActionResult TampilBarang(int kodeTipeCuci)
         {
-            var daftarBarang = _db.Barangs.Where(x => x.TipeCuciId == tipeCuciId).Select(x => new BarangViewModel{
-                                                                                                       Id = x.Id,
-                                                                                                       Nama = x.Nama
-                                                                                                    }).ToList();
+            var daftarBarang = _db.Barangs.Where(x => x.KodeTipeCuci == kodeTipeCuci).Select(x => new BarangViewModel
+            {
+                Kode = x.Kode,
+                Nama = x.Nama
+            }).ToList();
 
-            daftarBarang.Insert(0, new BarangViewModel { Id = 0, Nama = "-- Pilih Barang --" });
+            daftarBarang.Insert(0, new BarangViewModel { Kode = 0, Nama = "-- Pilih Barang --" });
 
-            var barangDDL = new SelectList(daftarBarang, "Id", "Nama", 0);            
+            var barangDDL = new SelectList(daftarBarang, "Kode", "Nama", 0);            
 
             return Json(barangDDL, JsonRequestBehavior.AllowGet);
         }
@@ -117,7 +118,7 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CariHarga(int kodeBarang)
         {
-            var daftarBarang = _db.Barangs.Where(x => x.Id == kodeBarang).SingleOrDefault();
+            var daftarBarang = _db.Barangs.Where(x => x.Kode == kodeBarang).SingleOrDefault();
 
             return Json(daftarBarang.Harga, JsonRequestBehavior.AllowGet);
         }
@@ -166,12 +167,12 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CetakTransaksi(string kodeTransaksi)
         {
-            var transaksiSatuan = _db.TransaksiSatuans.Where(x => x.KodeTransaksiSatuan == kodeTransaksi).SingleOrDefault();
+            var transaksiSatuan = _db.TransaksiSatuans.Where(x => x.Kode == kodeTransaksi).SingleOrDefault();
 
             var model = new ProsesSatuanViewModel
             {
-                KodeTransaksi   = transaksiSatuan.KodeTransaksiSatuan,
-                Pelanggan = new PelangganViewModel
+                Kode        = transaksiSatuan.Kode,
+                Pelanggan   = new PelangganViewModel
                 {
                     NoKtp   = transaksiSatuan.PelangganFK.NoKtp,
                     Nama    = transaksiSatuan.PelangganFK.Nama,
@@ -183,7 +184,7 @@ namespace JCleanLaundry.Controllers
                 NamaCounter     = transaksiSatuan.CounterFK.Nama,
                 Staff           = transaksiSatuan.StaffFK.UserName,
                 TanggalMasuk    = transaksiSatuan.TanggalMasuk,
-                TanggalSelesai  = transaksiSatuan.TanggalKeluar
+                TanggalSelesai  = transaksiSatuan.TanggalKeluar.GetValueOrDefault()
             };
             
             var details = new List<ProsesSatuanDetailViewModel>();
@@ -215,7 +216,7 @@ namespace JCleanLaundry.Controllers
         {
             var daftarTransaksi = _db.TransaksiSatuans.Where(x => x.StatusTransaksi != "Selesai").Select(x => new ProsesSatuanViewModel
             {
-                KodeTransaksi   = x.KodeTransaksiSatuan,
+                Kode            = x.Kode,
                 TanggalMasuk    = x.TanggalMasuk,
                 NamaCounter     = x.CounterFK.Nama
             }).ToList();
@@ -229,10 +230,10 @@ namespace JCleanLaundry.Controllers
         {
             var pelanggan = new Pelanggan
             {
-                Alamat = model.Alamat,
-                Hp = model.Hp,
-                Nama = model.Nama,
-                NoKtp = model.NoKtp
+                Alamat  = model.Alamat,
+                Hp      = model.Hp,
+                Nama    = model.Nama,
+                NoKtp   = model.NoKtp
             };
 
             _db.Pelanggans.Add(pelanggan);
@@ -250,7 +251,7 @@ namespace JCleanLaundry.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var staff = _db.Staffs.Where(x => x.Id == userId).SingleOrDefault();
+            var staff = _db.Staffs.Where(x => x.Kode == userId).SingleOrDefault();
 
             if (staff == null)
             {
@@ -270,13 +271,14 @@ namespace JCleanLaundry.Controllers
 
             var transaksiSatuan = new TransaksiSatuan
             {
-                KodeTransaksiSatuan = kodeTransaksi,
+                Kode                = kodeTransaksi,
                 KodeCounter         = counter.KodeCounter,
                 KodeStaff           = userId,
                 TanggalMasuk        = DateTime.Now,
                 TanggalKeluar       = DateTime.Now,
                 TotalBayar          = totalBayar,
-                KodePelanggan       = pelanggan.Id,
+                TotalBayarRevisi    = totalBayar,
+                KodePelanggan       = pelanggan.Kode,
                 UangMuka            = model.UangMuka,
                 StatusTransaksi     = "Diterima"
             };
@@ -289,7 +291,9 @@ namespace JCleanLaundry.Controllers
                 {
                     KodeTransaksiSatuan = kodeTransaksi,
                     KodeBarang          = detail.KodeBarang,
-                    Jumlah              = detail.Jumlah
+                    Jumlah              = detail.Jumlah,
+                    Pengecek            = userId,
+                    Revisi              = 0
                 };
 
                 transaksiSatuan.TransaksiSatuanDetilFK.Add(detil);
@@ -324,7 +328,7 @@ namespace JCleanLaundry.Controllers
 
             foreach (var detail in model.Detail)
             {
-                var harga = _db.Barangs.Where(x => x.Id == detail.KodeBarang).SingleOrDefault().Harga;
+                var harga = _db.Barangs.Where(x => x.Kode == detail.KodeBarang).SingleOrDefault().Harga;
 
                 total += detail.Jumlah * harga;
             }

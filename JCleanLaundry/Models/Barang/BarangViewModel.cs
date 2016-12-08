@@ -4,7 +4,7 @@ namespace JCleanLaundry.Models
 {
     public class BarangViewModel
     {
-        public int Id { get; set; }
+        public int Kode { get; set; }
 
         [Required]
         public string Nama { get; set; }
@@ -14,7 +14,7 @@ namespace JCleanLaundry.Models
 
         [Required]
         [Display(Name="Tipe Cucian")]
-        public int TipeCuciId { get; set; }
+        public int KodeTipeCuci { get; set; }
 
         public TipeCuciViewModel TipeCuci { get; set; }
 

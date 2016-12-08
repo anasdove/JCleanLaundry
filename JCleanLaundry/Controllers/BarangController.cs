@@ -21,12 +21,12 @@ namespace JCleanLaundry.Controllers
         {
             var models = _db.Barangs.Include(x => x.TipeCuciFK).OrderBy(x => x.Nama).Select(x => new BarangViewModel
             {
-                Harga = x.Harga,
-                Id = x.Id,
-                Nama = x.Nama,
+                Harga   = x.Harga,
+                Kode    = x.Kode,
+                Nama    = x.Nama,
                 TipeCuci = new TipeCuciViewModel
                 {
-                    Id = x.TipeCuciFK.Id,
+                    Kode = x.TipeCuciFK.Kode,
                     Tipe = x.TipeCuciFK.Tipe
                 }
             }).OrderBy(x => x.Nama).ToList();
@@ -37,15 +37,18 @@ namespace JCleanLaundry.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             var barang = _db.Barangs.Find(id);
+
             if (barang == null) return HttpNotFound();
+
             return View(barang);
         }
 
-        // GET: Barang/Create
         public ActionResult Create()
         {
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe");
+            ViewBag.KodeTipeCuci = new SelectList(_db.TipeCucis, "Kode", "Tipe");
+
             return View();
         }
 
@@ -55,19 +58,22 @@ namespace JCleanLaundry.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe", model.TipeCuciId);
+                ViewBag.KodeTipeCuci = new SelectList(_db.TipeCucis, "Kode", "Tipe", model.KodeTipeCuci);
+
                 return View(model);
             }
 
             var barang = new Barang
             {
-                Harga = model.Harga,
-                Nama = model.Nama,
-                TipeCuciId = model.TipeCuciId
+                Harga           = model.Harga,
+                Nama            = model.Nama,
+                KodeTipeCuci    = model.KodeTipeCuci
             };
 
             _db.Barangs.Add(barang);
+
             _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -85,13 +91,13 @@ namespace JCleanLaundry.Controllers
 
             var model = new BarangViewModel
             {
-                Id = barang.Id,
-                Harga = barang.Harga,
-                Nama = barang.Nama,
-                TipeCuciId = barang.TipeCuciId
+                Kode            = barang.Kode,
+                Harga           = barang.Harga,
+                Nama            = barang.Nama,
+                KodeTipeCuci    = barang.KodeTipeCuci
             };
 
-            ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe", barang.TipeCuciId);
+            ViewBag.KodeTipeCuci = new SelectList(_db.TipeCucis, "Kode", "Tipe", barang.KodeTipeCuci);
 
             return View(model);
         }
@@ -102,25 +108,26 @@ namespace JCleanLaundry.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.TipeCuciId = new SelectList(_db.TipeCucis, "Id", "Tipe", model.TipeCuciId);
+                ViewBag.KodeTipeCuci = new SelectList(_db.TipeCucis, "Kode", "Tipe", model.KodeTipeCuci);
+
                 return View(model);
             }
 
             var barang = new Barang
             {
-                Id = model.Id,
-                Harga = model.Harga,
-                Nama = model.Nama,
-                TipeCuciId = model.TipeCuciId
+                Kode            = model.Kode,
+                Harga           = model.Harga,
+                Nama            = model.Nama,
+                KodeTipeCuci    = model.KodeTipeCuci
             };
 
             _db.Entry(barang).State = EntityState.Modified;
+
             _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
-        // GET: Barang/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -138,7 +145,6 @@ namespace JCleanLaundry.Controllers
             return View(barang);
         }
 
-        // POST: Barang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

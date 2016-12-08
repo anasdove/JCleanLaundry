@@ -17,7 +17,7 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
-  <EntityType Name="BARANG">
+  <EntityType Name="TBL_BARANG">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -26,14 +26,14 @@
     <Property Name="Harga" Type="int" Nullable="false" />
     <Property Name="TipeCuciId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="COUNTER">
+  <EntityType Name="TBL_COUNTER">
     <Key>
       <PropertyRef Name="Kode_Counter" />
     </Key>
     <Property Name="Kode_Counter" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Nama" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <EntityType Name="PELANGGAN">
+  <EntityType Name="TBL_PELANGGAN">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -43,22 +43,23 @@
     <Property Name="NoKtp" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Alamat" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="STAFF_COUNTER">
+  <EntityType Name="TBL_STAFF_COUNTER">
     <Key>
       <PropertyRef Name="Kode" />
     </Key>
     <Property Name="Kode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Kode_Counter" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Kode_Staff" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Jabatan" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <EntityType Name="TIPE_CUCI">
+  <EntityType Name="TBL_TIPE_CUCI">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Tipe" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <EntityType Name="TRANSAKSI_SATUAN">
+  <EntityType Name="TBL_TRANSAKSI_SATUAN">
     <Key>
       <PropertyRef Name="Kode_Transaksi_Satuan" />
     </Key>
@@ -66,13 +67,14 @@
     <Property Name="Kode_Counter" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Kode_Staff" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="Tanggal_Masuk" Type="datetime" Nullable="false" />
-    <Property Name="Tanggal_Keluar" Type="datetime" Nullable="false" />
+    <Property Name="Tanggal_Keluar" Type="datetime" />
     <Property Name="Total_Bayar" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Total_Bayar_Revisi" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="Kode_Pelanggan" Type="int" Nullable="false" />
     <Property Name="Uang_Muka" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="Status_Transaksi" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <EntityType Name="TRANSAKSI_SATUAN_DETIL">
+  <EntityType Name="TBL_TRANSAKSI_SATUAN_DETIL">
     <Key>
       <PropertyRef Name="Kode_Transaksi_Satuan_Detil" />
     </Key>
@@ -80,143 +82,161 @@
     <Property Name="Kode_Transaksi_Satuan" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Kode_Barang" Type="int" Nullable="false" />
     <Property Name="Jumlah" Type="int" Nullable="false" />
+    <Property Name="Pengecek" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Revisi" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__BARANG__TipeCuci__6E01572D">
-    <End Role="TIPE_CUCI" Type="Self.TIPE_CUCI" Multiplicity="1" />
-    <End Role="BARANG" Type="Self.BARANG" Multiplicity="*" />
+  <Association Name="FK__TBL_BARAN__TipeC__18EBB532">
+    <End Role="TBL_TIPE_CUCI" Type="Self.TBL_TIPE_CUCI" Multiplicity="1" />
+    <End Role="TBL_BARANG" Type="Self.TBL_BARANG" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TIPE_CUCI">
+      <Principal Role="TBL_TIPE_CUCI">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="BARANG">
+      <Dependent Role="TBL_BARANG">
         <PropertyRef Name="TipeCuciId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="STAFF_COUNTER_COUNTER_FK">
-    <End Role="COUNTER" Type="Self.COUNTER" Multiplicity="1" />
-    <End Role="STAFF_COUNTER" Type="Self.STAFF_COUNTER" Multiplicity="*" />
+    <End Role="TBL_COUNTER" Type="Self.TBL_COUNTER" Multiplicity="1" />
+    <End Role="TBL_STAFF_COUNTER" Type="Self.TBL_STAFF_COUNTER" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="COUNTER">
+      <Principal Role="TBL_COUNTER">
         <PropertyRef Name="Kode_Counter" />
       </Principal>
-      <Dependent Role="STAFF_COUNTER">
+      <Dependent Role="TBL_STAFF_COUNTER">
         <PropertyRef Name="Kode_Counter" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="STAFF_COUNTER_STAFF_FK">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-    <End Role="STAFF_COUNTER" Type="Self.STAFF_COUNTER" Multiplicity="*" />
+    <End Role="TBL_STAFF_COUNTER" Type="Self.TBL_STAFF_COUNTER" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUsers">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="STAFF_COUNTER">
+      <Dependent Role="TBL_STAFF_COUNTER">
         <PropertyRef Name="Kode_Staff" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="TRANSAKSI_SATUAN_COUNTER_FK">
-    <End Role="COUNTER" Type="Self.COUNTER" Multiplicity="1" />
-    <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="*" />
+    <End Role="TBL_COUNTER" Type="Self.TBL_COUNTER" Multiplicity="1" />
+    <End Role="TBL_TRANSAKSI_SATUAN" Type="Self.TBL_TRANSAKSI_SATUAN" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="COUNTER">
+      <Principal Role="TBL_COUNTER">
         <PropertyRef Name="Kode_Counter" />
       </Principal>
-      <Dependent Role="TRANSAKSI_SATUAN">
+      <Dependent Role="TBL_TRANSAKSI_SATUAN">
         <PropertyRef Name="Kode_Counter" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="TRANSAKSI_SATUAN_DETIL_BARANG_FK">
-    <End Role="BARANG" Type="Self.BARANG" Multiplicity="1" />
-    <End Role="TRANSAKSI_SATUAN_DETIL" Type="Self.TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+    <End Role="TBL_BARANG" Type="Self.TBL_BARANG" Multiplicity="1" />
+    <End Role="TBL_TRANSAKSI_SATUAN_DETIL" Type="Self.TBL_TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="BARANG">
+      <Principal Role="TBL_BARANG">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="TRANSAKSI_SATUAN_DETIL">
+      <Dependent Role="TBL_TRANSAKSI_SATUAN_DETIL">
         <PropertyRef Name="Kode_Barang" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
-    <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="1" />
-    <End Role="TRANSAKSI_SATUAN_DETIL" Type="Self.TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+  <Association Name="TRANSAKSI_SATUAN_DETIL_PENGECEK_FK">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="TBL_TRANSAKSI_SATUAN_DETIL" Type="Self.TBL_TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TRANSAKSI_SATUAN">
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBL_TRANSAKSI_SATUAN_DETIL">
+        <PropertyRef Name="Pengecek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
+    <End Role="TBL_TRANSAKSI_SATUAN" Type="Self.TBL_TRANSAKSI_SATUAN" Multiplicity="1" />
+    <End Role="TBL_TRANSAKSI_SATUAN_DETIL" Type="Self.TBL_TRANSAKSI_SATUAN_DETIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_TRANSAKSI_SATUAN">
         <PropertyRef Name="Kode_Transaksi_Satuan" />
       </Principal>
-      <Dependent Role="TRANSAKSI_SATUAN_DETIL">
+      <Dependent Role="TBL_TRANSAKSI_SATUAN_DETIL">
         <PropertyRef Name="Kode_Transaksi_Satuan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="TRANSAKSI_SATUAN_PELANGGAN_FK">
-    <End Role="PELANGGAN" Type="Self.PELANGGAN" Multiplicity="1" />
-    <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="*" />
+    <End Role="TBL_PELANGGAN" Type="Self.TBL_PELANGGAN" Multiplicity="1" />
+    <End Role="TBL_TRANSAKSI_SATUAN" Type="Self.TBL_TRANSAKSI_SATUAN" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="PELANGGAN">
+      <Principal Role="TBL_PELANGGAN">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="TRANSAKSI_SATUAN">
+      <Dependent Role="TBL_TRANSAKSI_SATUAN">
         <PropertyRef Name="Kode_Pelanggan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="TRANSAKSI_SATUAN_STAFF_FK">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-    <End Role="TRANSAKSI_SATUAN" Type="Self.TRANSAKSI_SATUAN" Multiplicity="*" />
+    <End Role="TBL_TRANSAKSI_SATUAN" Type="Self.TBL_TRANSAKSI_SATUAN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUsers">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="TRANSAKSI_SATUAN">
+      <Dependent Role="TBL_TRANSAKSI_SATUAN">
         <PropertyRef Name="Kode_Staff" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="JCleanLaundryModelStoreContainer">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="BARANG" EntityType="Self.BARANG" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="COUNTER" EntityType="Self.COUNTER" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PELANGGAN" EntityType="Self.PELANGGAN" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="STAFF_COUNTER" EntityType="Self.STAFF_COUNTER" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TIPE_CUCI" EntityType="Self.TIPE_CUCI" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TRANSAKSI_SATUAN" EntityType="Self.TRANSAKSI_SATUAN" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TRANSAKSI_SATUAN_DETIL" EntityType="Self.TRANSAKSI_SATUAN_DETIL" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BARANG__TipeCuci__6E01572D" Association="Self.FK__BARANG__TipeCuci__6E01572D">
-      <End Role="TIPE_CUCI" EntitySet="TIPE_CUCI" />
-      <End Role="BARANG" EntitySet="BARANG" />
+    <EntitySet Name="TBL_BARANG" EntityType="Self.TBL_BARANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_COUNTER" EntityType="Self.TBL_COUNTER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PELANGGAN" EntityType="Self.TBL_PELANGGAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_STAFF_COUNTER" EntityType="Self.TBL_STAFF_COUNTER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_TIPE_CUCI" EntityType="Self.TBL_TIPE_CUCI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_TRANSAKSI_SATUAN" EntityType="Self.TBL_TRANSAKSI_SATUAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_TRANSAKSI_SATUAN_DETIL" EntityType="Self.TBL_TRANSAKSI_SATUAN_DETIL" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TBL_BARAN__TipeC__18EBB532" Association="Self.FK__TBL_BARAN__TipeC__18EBB532">
+      <End Role="TBL_TIPE_CUCI" EntitySet="TBL_TIPE_CUCI" />
+      <End Role="TBL_BARANG" EntitySet="TBL_BARANG" />
     </AssociationSet>
     <AssociationSet Name="STAFF_COUNTER_COUNTER_FK" Association="Self.STAFF_COUNTER_COUNTER_FK">
-      <End Role="COUNTER" EntitySet="COUNTER" />
-      <End Role="STAFF_COUNTER" EntitySet="STAFF_COUNTER" />
+      <End Role="TBL_COUNTER" EntitySet="TBL_COUNTER" />
+      <End Role="TBL_STAFF_COUNTER" EntitySet="TBL_STAFF_COUNTER" />
     </AssociationSet>
     <AssociationSet Name="STAFF_COUNTER_STAFF_FK" Association="Self.STAFF_COUNTER_STAFF_FK">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="STAFF_COUNTER" EntitySet="STAFF_COUNTER" />
+      <End Role="TBL_STAFF_COUNTER" EntitySet="TBL_STAFF_COUNTER" />
     </AssociationSet>
     <AssociationSet Name="TRANSAKSI_SATUAN_COUNTER_FK" Association="Self.TRANSAKSI_SATUAN_COUNTER_FK">
-      <End Role="COUNTER" EntitySet="COUNTER" />
-      <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
+      <End Role="TBL_COUNTER" EntitySet="TBL_COUNTER" />
+      <End Role="TBL_TRANSAKSI_SATUAN" EntitySet="TBL_TRANSAKSI_SATUAN" />
     </AssociationSet>
     <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_BARANG_FK" Association="Self.TRANSAKSI_SATUAN_DETIL_BARANG_FK">
-      <End Role="BARANG" EntitySet="BARANG" />
-      <End Role="TRANSAKSI_SATUAN_DETIL" EntitySet="TRANSAKSI_SATUAN_DETIL" />
+      <End Role="TBL_BARANG" EntitySet="TBL_BARANG" />
+      <End Role="TBL_TRANSAKSI_SATUAN_DETIL" EntitySet="TBL_TRANSAKSI_SATUAN_DETIL" />
+    </AssociationSet>
+    <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_PENGECEK_FK" Association="Self.TRANSAKSI_SATUAN_DETIL_PENGECEK_FK">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="TBL_TRANSAKSI_SATUAN_DETIL" EntitySet="TBL_TRANSAKSI_SATUAN_DETIL" />
     </AssociationSet>
     <AssociationSet Name="TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK" Association="Self.TRANSAKSI_SATUAN_DETIL_TRANSAKSI_SATUAN_FK">
-      <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
-      <End Role="TRANSAKSI_SATUAN_DETIL" EntitySet="TRANSAKSI_SATUAN_DETIL" />
+      <End Role="TBL_TRANSAKSI_SATUAN" EntitySet="TBL_TRANSAKSI_SATUAN" />
+      <End Role="TBL_TRANSAKSI_SATUAN_DETIL" EntitySet="TBL_TRANSAKSI_SATUAN_DETIL" />
     </AssociationSet>
     <AssociationSet Name="TRANSAKSI_SATUAN_PELANGGAN_FK" Association="Self.TRANSAKSI_SATUAN_PELANGGAN_FK">
-      <End Role="PELANGGAN" EntitySet="PELANGGAN" />
-      <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
+      <End Role="TBL_PELANGGAN" EntitySet="TBL_PELANGGAN" />
+      <End Role="TBL_TRANSAKSI_SATUAN" EntitySet="TBL_TRANSAKSI_SATUAN" />
     </AssociationSet>
     <AssociationSet Name="TRANSAKSI_SATUAN_STAFF_FK" Association="Self.TRANSAKSI_SATUAN_STAFF_FK">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="TRANSAKSI_SATUAN" EntitySet="TRANSAKSI_SATUAN" />
+      <End Role="TBL_TRANSAKSI_SATUAN" EntitySet="TBL_TRANSAKSI_SATUAN" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

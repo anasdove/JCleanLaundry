@@ -1,35 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="JCleanLaundryModelStoreContainer" CdmEntityContainer="JCleanLaundryEntities">
-    <EntitySetMapping Name="Barangs1">
-      <EntityTypeMapping TypeName="JCleanLaundryModel.Barang">
-        <MappingFragment StoreEntitySet="BARANG">
-          <ScalarProperty Name="TipeCuciId" ColumnName="TipeCuciId" />
-          <ScalarProperty Name="Harga" ColumnName="Harga" />
-          <ScalarProperty Name="Nama" ColumnName="Nama" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Pelanggans1">
-      <EntityTypeMapping TypeName="JCleanLaundryModel.Pelanggan">
-        <MappingFragment StoreEntitySet="PELANGGAN">
-          <ScalarProperty Name="Alamat" ColumnName="Alamat" />
-          <ScalarProperty Name="NoKtp" ColumnName="NoKtp" />
-          <ScalarProperty Name="Hp" ColumnName="Hp" />
-          <ScalarProperty Name="Nama" ColumnName="Nama" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TipeCucis">
-      <EntityTypeMapping TypeName="JCleanLaundryModel.TipeCuci">
-        <MappingFragment StoreEntitySet="TIPE_CUCI">
-          <ScalarProperty Name="Tipe" ColumnName="Tipe" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Staffs">
       <EntityTypeMapping TypeName="JCleanLaundryModel.Staff">
         <MappingFragment StoreEntitySet="AspNetUsers">
@@ -44,49 +15,82 @@
           <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
           <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kode" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Counters1">
-      <EntityTypeMapping TypeName="JCleanLaundryModel.Counter">
-        <MappingFragment StoreEntitySet="COUNTER">
+    <EntitySetMapping Name="Barangs">
+      <EntityTypeMapping TypeName="JCleanLaundryModel.Barang">
+        <MappingFragment StoreEntitySet="TBL_BARANG">
+          <ScalarProperty Name="KodeTipeCuci" ColumnName="TipeCuciId" />
+          <ScalarProperty Name="Harga" ColumnName="Harga" />
           <ScalarProperty Name="Nama" ColumnName="Nama" />
-          <ScalarProperty Name="KodeCounter" ColumnName="Kode_Counter" />
+          <ScalarProperty Name="Kode" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counters">
+      <EntityTypeMapping TypeName="JCleanLaundryModel.Counter">
+        <MappingFragment StoreEntitySet="TBL_COUNTER">
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode_Counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pelanggans">
+      <EntityTypeMapping TypeName="JCleanLaundryModel.Pelanggan">
+        <MappingFragment StoreEntitySet="TBL_PELANGGAN">
+          <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+          <ScalarProperty Name="NoKtp" ColumnName="NoKtp" />
+          <ScalarProperty Name="Hp" ColumnName="Hp" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StaffCounters">
       <EntityTypeMapping TypeName="JCleanLaundryModel.StaffCounter">
-        <MappingFragment StoreEntitySet="STAFF_COUNTER">
+        <MappingFragment StoreEntitySet="TBL_STAFF_COUNTER">
+          <ScalarProperty Name="Jabatan" ColumnName="Jabatan" />
           <ScalarProperty Name="KodeStaff" ColumnName="Kode_Staff" />
           <ScalarProperty Name="KodeCounter" ColumnName="Kode_Counter" />
           <ScalarProperty Name="Kode" ColumnName="Kode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TipeCucis">
+      <EntityTypeMapping TypeName="JCleanLaundryModel.TipeCuci">
+        <MappingFragment StoreEntitySet="TBL_TIPE_CUCI">
+          <ScalarProperty Name="Tipe" ColumnName="Tipe" />
+          <ScalarProperty Name="Kode" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TransaksiSatuans">
       <EntityTypeMapping TypeName="JCleanLaundryModel.TransaksiSatuan">
-        <MappingFragment StoreEntitySet="TRANSAKSI_SATUAN">
+        <MappingFragment StoreEntitySet="TBL_TRANSAKSI_SATUAN">
           <ScalarProperty Name="StatusTransaksi" ColumnName="Status_Transaksi" />
           <ScalarProperty Name="UangMuka" ColumnName="Uang_Muka" />
           <ScalarProperty Name="KodePelanggan" ColumnName="Kode_Pelanggan" />
+          <ScalarProperty Name="TotalBayarRevisi" ColumnName="Total_Bayar_Revisi" />
           <ScalarProperty Name="TotalBayar" ColumnName="Total_Bayar" />
           <ScalarProperty Name="TanggalKeluar" ColumnName="Tanggal_Keluar" />
           <ScalarProperty Name="TanggalMasuk" ColumnName="Tanggal_Masuk" />
           <ScalarProperty Name="KodeStaff" ColumnName="Kode_Staff" />
           <ScalarProperty Name="KodeCounter" ColumnName="Kode_Counter" />
-          <ScalarProperty Name="KodeTransaksiSatuan" ColumnName="Kode_Transaksi_Satuan" />
+          <ScalarProperty Name="Kode" ColumnName="Kode_Transaksi_Satuan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransaksiSatuanDetils">
       <EntityTypeMapping TypeName="JCleanLaundryModel.TransaksiSatuanDetil">
-        <MappingFragment StoreEntitySet="TRANSAKSI_SATUAN_DETIL">
+        <MappingFragment StoreEntitySet="TBL_TRANSAKSI_SATUAN_DETIL">
+          <ScalarProperty Name="Revisi" ColumnName="Revisi" />
+          <ScalarProperty Name="Pengecek" ColumnName="Pengecek" />
           <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
           <ScalarProperty Name="KodeBarang" ColumnName="Kode_Barang" />
           <ScalarProperty Name="KodeTransaksiSatuan" ColumnName="Kode_Transaksi_Satuan" />
-          <ScalarProperty Name="KodeTransaksiSatuanDetil" ColumnName="Kode_Transaksi_Satuan_Detil" />
+          <ScalarProperty Name="Kode" ColumnName="Kode_Transaksi_Satuan_Detil" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -24,6 +24,8 @@ public partial class StaffCounter
 
     public string KodeStaff { get; set; }
 
+    public string Jabatan { get; set; }
+
 
 
     public virtual Staff StaffFK { get; set; }

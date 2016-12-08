@@ -18,7 +18,7 @@ using System;
 public partial class TransaksiSatuanDetil
 {
 
-    public int KodeTransaksiSatuanDetil { get; set; }
+    public int Kode { get; set; }
 
     public string KodeTransaksiSatuan { get; set; }
 
@@ -26,7 +26,13 @@ public partial class TransaksiSatuanDetil
 
     public int Jumlah { get; set; }
 
+    public string Pengecek { get; set; }
 
+    public int Revisi { get; set; }
+
+
+
+    public virtual Staff StaffFK { get; set; }
 
     public virtual Barang BarangFK { get; set; }
 

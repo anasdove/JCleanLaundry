@@ -88,18 +88,16 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.TipeCucian, new { @class = "control-label col-sm-3" })
+                            @Html.LabelFor(model => model.KodeTipeCuci, new { @class = "control-label col-sm-3" })
                             <div class="col-sm-9">
-                                @Html.DropDownList("TipeCucian", null, htmlAttributes: new { @class = "form-control", @id = "satuan_ddl-tipecucian" })
-                                @Html.ValidationMessageFor(model => model.TipeCucian, "", new { @class = "text-danger" })
+                                @Html.DropDownList("KodeTipeCuci", null, htmlAttributes: new { @class = "form-control", @id = "satuan_ddl-tipecucian" })
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.BarangId, new { @class = "control-label col-sm-3" })
+                            @Html.LabelFor(model => model.KodeBarang, new { @class = "control-label col-sm-3" })
                             <div class="col-sm-9">
-                                @Html.DropDownList("BarangId", null, htmlAttributes: new { @class = "form-control", @id = "satuan_ddl-barang" })
-                                @Html.ValidationMessageFor(model => model.BarangId, "", new { @class = "text-danger" })
+                                @Html.DropDownList("KodeBarang", null, htmlAttributes: new { @class = "form-control", @id = "satuan_ddl-barang" })
                             </div>
                         </div>
 

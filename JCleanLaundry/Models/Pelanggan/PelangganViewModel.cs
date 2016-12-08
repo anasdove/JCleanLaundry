@@ -4,7 +4,7 @@ namespace JCleanLaundry.Models
 {
     public class PelangganViewModel
     {
-        public int Id { get; set; }
+        public int Kode { get; set; }
 
         [Required]
         public string Nama { get; set; }

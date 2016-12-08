@@ -27,7 +27,7 @@ public partial class Pelanggan
     }
 
 
-    public int Id { get; set; }
+    public int Kode { get; set; }
 
     public string Nama { get; set; }
 

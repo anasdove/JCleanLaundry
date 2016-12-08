@@ -10,11 +10,11 @@ namespace JCleanLaundry.Models
 
         [Required]
         [Display(Name="Pilih Barang")]
-        public int BarangId { get; set; }
+        public int KodeBarang { get; set; }
 
         [Required]
         [Display(Name = "Tipe")]
-        public int TipeCucian { get; set; }
+        public int KodeTipeCuci { get; set; }
 
         [Required]
         [Display(Name = "Jumlah")]

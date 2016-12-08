@@ -2,7 +2,8 @@
 {
     public class TipeCuciViewModel
     {
-        public int Id { get; set; }
+        public int Kode { get; set; }
+
         public string Tipe { get; set; }
     }
 }

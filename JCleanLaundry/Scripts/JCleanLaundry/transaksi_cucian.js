@@ -48,20 +48,23 @@
         }
 
         var tampilkanBarang = function (value, url) {
+
             var ProcessingInstruction = "<option value='0'> Please wait...</option>";
+
             $("#satuan_ddl-barang").html(ProcessingInstruction).show();
 
             var ajaxOpsi = {
-                url: url,
-                type: "GET",
-                dataType: "json",
-                data: { "tipeCuciId": value },
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
+                url         : url,
+                type        : "GET",
+                dataType    : "json",
+                data        : { "kodeTipeCuci": value },
+                contentType : "application/json; charset=utf-8",
+                success     : function (data) {
                     
                     var markup = null;
 
                     for (var x = 0; x < data.length; x++) {
+
                         markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                     }
 

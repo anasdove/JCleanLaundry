@@ -27,13 +27,13 @@ public partial class Barang
     }
 
 
-    public int Id { get; set; }
+    public int Kode { get; set; }
 
     public string Nama { get; set; }
 
     public int Harga { get; set; }
 
-    public int TipeCuciId { get; set; }
+    public int KodeTipeCuci { get; set; }
 
 
 

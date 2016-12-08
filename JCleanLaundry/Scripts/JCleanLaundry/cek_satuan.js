@@ -39,7 +39,7 @@
 
             $.each(data, function (index, value) {
 
-                var kodeTransaksi   = data[index].KodeTransaksi;
+                var kodeTransaksi   = data[index].Kode;
                 var tglMasuk        = new Date(parseInt(data[index].TanggalMasuk.substr(6))).toLocaleString().split(",")[0];
                 var counter         = data[index].NamaCounter;
 

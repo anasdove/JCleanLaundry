@@ -27,7 +27,7 @@ public partial class TransaksiSatuan
     }
 
 
-    public string KodeTransaksiSatuan { get; set; }
+    public string Kode { get; set; }
 
     public string KodeCounter { get; set; }
 
@@ -35,9 +35,11 @@ public partial class TransaksiSatuan
 
     public System.DateTime TanggalMasuk { get; set; }
 
-    public System.DateTime TanggalKeluar { get; set; }
+    public Nullable<System.DateTime> TanggalKeluar { get; set; }
 
     public decimal TotalBayar { get; set; }
+
+    public decimal TotalBayarRevisi { get; set; }
 
     public int KodePelanggan { get; set; }
 

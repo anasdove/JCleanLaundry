@@ -29,7 +29,7 @@ public partial class Counter
     }
 
 
-    public string KodeCounter { get; set; }
+    public string Kode { get; set; }
 
     public string Nama { get; set; }
 

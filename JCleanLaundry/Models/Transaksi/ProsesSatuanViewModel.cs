@@ -7,7 +7,7 @@ namespace JCleanLaundry.Models
     public class ProsesSatuanViewModel
     {
         [Display(Name = "Kode")]
-        public string KodeTransaksi { get; set; }
+        public string Kode { get; set; }
 
         [Display(Name = "Pelanggan")]
         public PelangganViewModel Pelanggan { get; set; }

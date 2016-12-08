@@ -21,7 +21,7 @@ namespace JCleanLaundry.Controllers
             {
                 Alamat = x.Alamat,
                 Hp = x.Hp,
-                Id = x.Id,
+                Kode = x.Kode,
                 Nama = x.Nama,
                 NoKtp = x.NoKtp
             }).ToList();
@@ -41,7 +41,7 @@ namespace JCleanLaundry.Controllers
             {
                 Alamat = pelanggan.Alamat,
                 Hp = pelanggan.Hp,
-                Id = pelanggan.Id,
+                Kode = pelanggan.Kode,
                 Nama = pelanggan.Nama,
                 NoKtp = pelanggan.NoKtp
             };
@@ -86,7 +86,7 @@ namespace JCleanLaundry.Controllers
             {
                 Alamat = pelanggan.Alamat,
                 Hp = pelanggan.Hp,
-                Id = pelanggan.Id,
+                Kode = pelanggan.Kode,
                 Nama = pelanggan.Nama,
                 NoKtp = pelanggan.NoKtp
             };
@@ -102,7 +102,7 @@ namespace JCleanLaundry.Controllers
 
             var pelanggan = new Pelanggan
             {
-                Id = model.Id,
+                Kode = model.Kode,
                 Alamat = model.Alamat,
                 Hp = model.Hp,
                 Nama = model.Nama,

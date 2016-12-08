@@ -27,7 +27,7 @@ public partial class TipeCuci
     }
 
 
-    public int Id { get; set; }
+    public int Kode { get; set; }
 
     public string Tipe { get; set; }
 
