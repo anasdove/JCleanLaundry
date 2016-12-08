@@ -1,0 +1,19 @@
+﻿/* Cetak Transaksi */
+
+.cetak-transaksi_div-container {
+    padding-left    : 0;
+    padding-right   : 0;
+}
+
+.cetak-transaksi_btn-cetak{
+    background      : #f37021;
+    border          : none;
+    padding-top     : 15px;
+    padding-bottom  : 15px;
+}
+
+#cetak-transaksi_table-detil caption{
+    font-size       : 14px;
+    font-weight     : bold;
+    padding         : 10px;
+}

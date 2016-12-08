@@ -12,8 +12,12 @@ namespace JCleanLaundry.Models
         [Display(Name = "Pelanggan")]
         public PelangganViewModel Pelanggan { get; set; }
 
+        [Display(Name = "Uang Muka")]
+        [DisplayFormat(DataFormatString = "{0:#.####}")]
         public decimal UangMuka { get; set; }
 
+        [Display(Name = "Total Bayar")]
+        [DisplayFormat(DataFormatString = "{0:#.####}")]
         public decimal TotalBayar { get; set; }
 
         [Display(Name = "Tgl Masuk")]

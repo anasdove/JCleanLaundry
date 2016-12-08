@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:35</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.dll">
-      <publishTime>12/07/2016 09:20:05</publishTime>
+      <publishTime>12/07/2016 14:43:32</publishTime>
     </File>
     <File Include="bin/JCleanLaundry.pdb">
-      <publishTime>12/07/2016 09:20:05</publishTime>
+      <publishTime>12/07/2016 14:43:32</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/08/2016 10:37:35</publishTime>
@@ -212,7 +212,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/26/2016 09:09:49</publishTime>
     </File>
     <File Include="JCleanLaundryModel.edmx.diagram">
-      <publishTime>11/08/2016 10:37:33</publishTime>
+      <publishTime>12/07/2016 11:02:31</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>11/08/2016 10:37:33</publishTime>
@@ -236,10 +236,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 12:09:59</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_cucian.js">
-      <publishTime>12/07/2016 09:17:36</publishTime>
+      <publishTime>12/07/2016 13:42:56</publishTime>
     </File>
     <File Include="Scripts/JCleanLaundry/transaksi_pelanggan.js">
-      <publishTime>11/08/2016 14:09:00</publishTime>
+      <publishTime>12/07/2016 13:42:12</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>11/08/2016 10:37:33</publishTime>
@@ -275,7 +275,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/06/2016 17:11:43</publishTime>
+      <publishTime>12/07/2016 10:14:12</publishTime>
     </File>
     <File Include="SQL_Scripts/buat_tabel_barang.sql">
       <publishTime>11/08/2016 10:37:34</publishTime>
@@ -416,7 +416,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 15:32:07</publishTime>
     </File>
     <File Include="Views/Transaksi/CetakTransaksi.cshtml">
-      <publishTime>12/07/2016 09:19:04</publishTime>
+      <publishTime>12/07/2016 14:40:35</publishTime>
     </File>
     <File Include="Views/Transaksi/JenisTransaksi.cshtml">
       <publishTime>11/08/2016 13:54:40</publishTime>
@@ -452,7 +452,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/08/2016 10:37:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/07/2016 09:21:25</publishTime>
+      <publishTime>12/07/2016 14:43:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

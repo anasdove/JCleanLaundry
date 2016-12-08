@@ -204,6 +204,8 @@ namespace JCleanLaundry.Controllers
             return View(model);
         }
 
+        #region Private Method
+
         private void SimpanDataPelanggan(PelangganViewModel model)
         {
             var pelanggan = new Pelanggan
@@ -310,5 +312,7 @@ namespace JCleanLaundry.Controllers
 
             return total;
         }
+
+        #endregion
     }
 }

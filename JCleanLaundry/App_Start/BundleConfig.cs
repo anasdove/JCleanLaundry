@@ -39,6 +39,9 @@ namespace JCleanLaundry
                       "~/Scripts/JCleanLaundry/transaksi_pelanggan.js",
                       "~/Scripts/JCleanLaundry/transaksi_cucian.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/cetaktransaksi").Include(
+                      "~/Scripts/JCleanLaundry/cetak_transaksi.js"));
+
             #endregion
 
             #region StyleSheets
@@ -55,7 +58,8 @@ namespace JCleanLaundry
                       "~/Content/JCleanLaundry/menu-utama.css",
                       "~/Content/JCleanLaundry/pengambilan.css",
                       "~/Content/JCleanLaundry/status.css",
-                      "~/Content/JCleanLaundry/transaksi.css"));
+                      "~/Content/JCleanLaundry/transaksi.css",
+                      "~/Content/JCleanLaundry/cetak-transaksi.css"));
 
             #endregion
         }
