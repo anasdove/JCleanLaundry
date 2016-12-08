@@ -89,7 +89,13 @@ namespace JCleanLaundry.Controllers
         [HttpGet]
         public ActionResult CekNoPelanggan(string noHp)
         {
-            var pelanggan = _db.Pelanggans.FirstOrDefault(x => x.Hp == noHp);
+            var pelanggan = _db.Pelanggans.Where(x => x.Hp == noHp).Select(m => new PelangganViewModel
+            {
+                Nama    = m.Nama,
+                NoKtp   = m.NoKtp,
+                Alamat  = m.Alamat
+            }).SingleOrDefault();
+
             return Json(new { noHpAda = pelanggan != null, pelanggan }, JsonRequestBehavior.AllowGet);
         }
 
@@ -202,6 +208,19 @@ namespace JCleanLaundry.Controllers
             model.Detail = details;
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult TampilTransaksiSatuan()
+        {
+            var daftarTransaksi = _db.TransaksiSatuans.Where(x => x.StatusTransaksi != "Selesai").Select(x => new ProsesSatuanViewModel
+            {
+                KodeTransaksi   = x.KodeTransaksiSatuan,
+                TanggalMasuk    = x.TanggalMasuk,
+                NamaCounter     = x.CounterFK.Nama
+            }).ToList();
+
+            return Json(daftarTransaksi, JsonRequestBehavior.AllowGet);
         }
 
         #region Private Method

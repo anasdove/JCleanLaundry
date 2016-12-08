@@ -273,6 +273,7 @@
     <None Include="Properties\PublishProfiles\JCleanLaundry.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Bootstrap\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\JCleanLaundry\cek_satuan.js" />
     <Content Include="Scripts\JCleanLaundry\datatable-helper.js" />
     <Content Include="Scripts\JCleanLaundry\cetak_transaksi.js" />
     <Content Include="Scripts\JCleanLaundry\transaksi_cucian.js" />

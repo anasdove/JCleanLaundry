@@ -42,6 +42,9 @@ namespace JCleanLaundry
             bundles.Add(new ScriptBundle("~/bundles/cetaktransaksi").Include(
                       "~/Scripts/JCleanLaundry/cetak_transaksi.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/cek-satuan").Include(
+                      "~/Scripts/JCleanLaundry/cek_satuan.js"));
+
             #endregion
 
             #region StyleSheets

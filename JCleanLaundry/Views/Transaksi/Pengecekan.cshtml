@@ -7,9 +7,35 @@
 <hr />
 <div class="container">
     <div class="row">
-        <div class="col-xs-12"></div>
+        <div class="col-xs-12" id="cek-satuan_div-container">
+            <div id="cek-satuan_div-tabel-transaksi">
+                <table class="table table-striped table-hover table-bordered" id="cek-satuan_tabel-transaksi"></table>
+            </div>
+        </div>
     </div>
 </div>
 
 @Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/datatable")
 @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/cek-satuan")
+
+<script>
+
+    $(document).ready(function () {
+        
+        var _tampilTransaksiSatuanUrl           = "@Url.Action("TampilTransaksiSatuan", "Transaksi")";
+
+        var _cekSatuanDivContainer              = "#cek-satuan_div-container";
+        var _cekSatuanTabelTransaksiSelector    = "#cek-satuan_tabel-transaksi";
+
+        var _loadingOJ      = jclean.web.loading();
+        var _cekSatuanOJ    = jclean.web.cek_satuan();
+
+        _loadingOJ.init(_cekSatuanDivContainer);
+
+        _cekSatuanOJ.awal(_tampilTransaksiSatuanUrl);
+
+    });
+
+</script>
