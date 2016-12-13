@@ -12,10 +12,17 @@
 
         var awal = function (url) {
 
-            _tampilkanDetil(url);
+            _tampilkanDaftarTransaksi(url);
         }
 
-        var _tampilkanDetil = function (url) {
+        var pilihDetil = function (row, url) {
+
+            var kodeTransaksi       = $(_tabelDetilSelector).DataTable().row(row).data()[0];
+
+            window.location.href    = url.replace('__id__', kodeTransaksi);
+        }
+
+        var _tampilkanDaftarTransaksi = function (url) {
 
             var ajaxOpsi = {
                 url         : url,
@@ -67,7 +74,8 @@
         }
 
         return {
-            "awal"               : awal
+            "awal"               : awal,
+            "pilihDetil"         : pilihDetil
         }
     }
 }());

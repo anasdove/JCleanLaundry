@@ -62,6 +62,7 @@ namespace JCleanLaundry
                       "~/Content/JCleanLaundry/pengambilan.css",
                       "~/Content/JCleanLaundry/status.css",
                       "~/Content/JCleanLaundry/transaksi.css",
+                      "~/Content/JCleanLaundry/pengecekan.css",
                       "~/Content/JCleanLaundry/cetak-transaksi.css"));
 
             #endregion

@@ -23,19 +23,28 @@
 <script>
 
     $(document).ready(function () {
-        
-        var _tampilTransaksiSatuanUrl           = "@Url.Action("TampilTransaksiSatuan", "Transaksi")";
+
+        var _tampilTransaksiSatuanUrl           = "@Url.Action("TampilTransaksi", "CekSatuan")";
+        var _tampilDetilTransaksiSatuanUrl      = "@Url.Action("TampilDetil", "CekSatuan", new { kodeTransaksi = "__id__" })";
+
 
         var _cekSatuanDivContainer              = "#cek-satuan_div-container";
         var _cekSatuanTabelTransaksiSelector    = "#cek-satuan_tabel-transaksi";
+        var _trTbodySelector                    = "tbody tr";
 
         var _loadingOJ      = jclean.web.loading();
         var _cekSatuanOJ    = jclean.web.cek_satuan();
+
+        var _clickEvent     = "click";
 
         _loadingOJ.init(_cekSatuanDivContainer);
 
         _cekSatuanOJ.awal(_tampilTransaksiSatuanUrl);
 
+        $(_cekSatuanTabelTransaksiSelector).on(_clickEvent, _trTbodySelector, function () {
+
+            _cekSatuanOJ.pilihDetil(this, _tampilDetilTransaksiSatuanUrl);
+        });
     });
 
 </script>

@@ -164,7 +164,8 @@ namespace JCleanLaundry.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("MenuUtama", "Transaksi");
+
+            return RedirectToAction("Index", "Menu");
         }
 
         #endregion

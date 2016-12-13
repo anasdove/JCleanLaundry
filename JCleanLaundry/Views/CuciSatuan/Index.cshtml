@@ -3,11 +3,15 @@
 @{
     ViewBag.Title = "Satuan";
 }
+
 <h2>
     <i class="fa fa-shopping-basket transaksi_image-title" aria-hidden="true"></i> Transaksi - Satuan
 </h2>
+
 <hr />
+
 <div class="col-xs-12 transaksi_div-container" id="transaksi_div-container">
+
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-primary">
@@ -72,7 +76,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
@@ -83,7 +87,7 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    
+
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -104,7 +108,7 @@
                         <div class="form-group">
                             @Html.Label("Harga", new { @class = "control-label col-sm-3" })
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(model => model.Harga, new { @class = "form-control",  @id = "satuan_text-harga", @disabled = "disabled" })
+                                @Html.TextBoxFor(model => model.Harga, new { @class = "form-control", @id = "satuan_text-harga", @disabled = "disabled" })
                             </div>
                         </div>
 
@@ -162,7 +166,7 @@
                     </a>
                 </h4>
             </div>
-            <div >
+            <div>
                 <div class="panel-body div_satuan-total-bayar-body">
                     <span id="div_satuan-total-bayar">0</span>
                 </div>
@@ -204,7 +208,7 @@
 
         $("#transaksi_btn-periksa-pelanggan").on(_clickEvent, function () {
 
-            transaksi_pelangganOJ.cekNoHpPelanggan('@Url.Action("CekNoPelanggan", "Transaksi")');
+            transaksi_pelangganOJ.cekNoHpPelanggan('@Url.Action("CekNoPelanggan", "CuciSatuan")');
         });
 
         $("#transaksi_btn-ulang-cari-pelanggan").on(_clickEvent, function () {
@@ -216,12 +220,12 @@
 
         $("#satuan_ddl-tipecucian").change(function () {
 
-            transaksi_cucianOJ.tampilkanBarang(this.value, '@Url.Action("TampilBarang", "Transaksi")');
+            transaksi_cucianOJ.tampilkanBarang(this.value, '@Url.Action("TampilBarang", "CuciSatuan")');
         });
 
         $("#satuan_ddl-barang").change(function () {
 
-            transaksi_cucianOJ.tampilkanHarga(this.value, '@Url.Action("CariHarga", "Transaksi")');
+            transaksi_cucianOJ.tampilkanHarga(this.value, '@Url.Action("CariHarga", "CuciSatuan")');
         })
 
         transaksi_cucianOJ.tampilkanTabelBarangAwal();
@@ -233,13 +237,13 @@
 
         $(_tableSatuanBarangSelector).on(_clickEvent, _trTbodySelector, function () {
 
-            
+
             transaksi_cucianOJ.hapusBarangDariTabel(this);
         });
 
         $(_buttonSatuanProcessSelector).on(_clickEvent, function () {
 
-            transaksi_cucianOJ.prosesTransaksiSatuan('@Url.Action("SimpanTransaksiSatuan", "Transaksi")', '@Url.Action("CetakTransaksi", "Transaksi", new { kodeTransaksi = "__id__" })');
+            transaksi_cucianOJ.prosesTransaksiSatuan('@Url.Action("SimpanTransaksiSatuan", "CuciSatuan")', '@Url.Action("CetakTransaksi", "CuciSatuan", new { kodeTransaksi = "__id__" })');
         });
     });
 </script>

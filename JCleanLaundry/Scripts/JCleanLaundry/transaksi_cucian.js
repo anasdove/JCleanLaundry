@@ -330,6 +330,8 @@
                         return;
                     }
 
+                    _tampilkanPeringatan("Transaksi Satuan Berhasil");
+
                     window.location.href = cetakUrl.replace('__id__', data);
                 }
             };

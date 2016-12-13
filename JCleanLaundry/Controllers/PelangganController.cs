@@ -6,6 +6,7 @@ using JCleanLaundry.Models;
 
 namespace JCleanLaundry.Controllers
 {
+    [Authorize]
     public class PelangganController : Controller
     {
         private readonly JCleanLaundryEntities _db;

@@ -1,0 +1,59 @@
+﻿@model JCleanLaundry.Models.CekSatuanViewModel
+
+@{
+    ViewBag.Title = "Pengecekan - Detil";
+}
+<h2>
+    <i class="fa fa-check-square pengecekan_image-title" aria-hidden="true"></i> Pengecekan - Detil
+</h2>
+
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" id="cek-satuan_div-container">
+
+            <form class="form-horizontal">
+
+                <div>Kode : @Model.Kode</div>
+
+                <br />
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td>No</td>
+                            <td>Tipe</td>
+                            <td>Barang</td>
+                            <td>Jumlah</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var no = 1;
+                        }
+
+                        @foreach (var detil in Model.Detail)
+                        {
+                            <tr>
+                                <td>@no</td>
+                                <td>@detil.Barang.TipeCuci.Tipe</td>
+                                <td>@detil.Barang.Nama</td>
+                                <td>@detil.Jumlah</td>
+                            </tr>
+
+                            no += 1;
+                        }
+                    </tbody>
+                </table>
+
+                <br />
+                <div class="transaksi_div-aksi">
+                    <button class="btn btn-primary btn-lg cetak-transaksi_btn-cetak"><i class="fa fa-floppy-o" aria-hidden="true"></i> Ubah</button>
+                    <button class="btn btn-primary btn-lg cetak-transaksi_btn-cetak"><i class="fa fa-floppy-o" aria-hidden="true"></i> Selesai</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

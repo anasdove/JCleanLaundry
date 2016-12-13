@@ -173,10 +173,20 @@
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AmbilKiloanController.cs" />
+    <Compile Include="Controllers\AmbilSatuanController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
+    <Compile Include="Controllers\CekKiloanController.cs" />
+    <Compile Include="Controllers\CekSatuanController.cs" />
+    <Compile Include="Controllers\CuciKiloanController.cs" />
+    <Compile Include="Controllers\CuciSatuanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LaporanKiloanController.cs" />
+    <Compile Include="Controllers\LaporanSatuanController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PelangganController.cs" />
-    <Compile Include="Controllers\TransaksiController.cs" />
+    <Compile Include="Controllers\StatusKiloanController.cs" />
+    <Compile Include="Controllers\StatusSatuanController.cs" />
     <Compile Include="Counter.cs">
       <DependentUpon>JCleanLaundryModel.tt</DependentUpon>
     </Compile>
@@ -204,7 +214,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pelanggan\PelangganViewModel.cs" />
     <Compile Include="Models\TipeCuci\TipeCuciViewModel.cs" />
+    <Compile Include="Models\Transaksi\CekSatuanDetilViewModel.cs" />
     <Compile Include="Models\Transaksi\ProsesSatuanDetailViewModel.cs" />
+    <Compile Include="Models\Transaksi\CekSatuanViewModel.cs" />
     <Compile Include="Models\Transaksi\ProsesSatuanViewModel.cs" />
     <Compile Include="Models\Transaksi\SatuanViewModel.cs" />
     <Compile Include="Pelanggan.cs">
@@ -232,6 +244,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\JCleanLaundry\pengecekan.css" />
     <Content Include="Content\JCleanLaundry\dataTables.bootstrap.min.css" />
     <Content Include="Content\JCleanLaundry\menu-utama.css" />
     <Content Include="Content\JCleanLaundry\pengambilan.css" />
@@ -298,7 +311,9 @@
     <None Include="SQL_Scripts\4. buat_tabel_pelanggan.sql" />
     <None Include="SQL_Scripts\2. buat_tabel_barang.sql" />
     <None Include="SQL_Scripts\1. hapus_identity.sql" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -326,19 +341,24 @@
     <Content Include="Views\Pelanggan\Details.cshtml" />
     <Content Include="Views\Pelanggan\Edit.cshtml" />
     <Content Include="Views\Pelanggan\Index.cshtml" />
-    <Content Include="Views\Transaksi\Status.cshtml" />
-    <Content Include="Views\Transaksi\MenuUtama.cshtml" />
-    <Content Include="Views\Transaksi\Transaksi.cshtml" />
-    <Content Include="Views\Transaksi\Pengambilan.cshtml" />
-    <Content Include="Views\Transaksi\Pengecekan.cshtml" />
-    <Content Include="Views\Transaksi\Laporan.cshtml" />
-    <Content Include="Views\Transaksi\JenisTransaksi.cshtml" />
-    <Content Include="Views\Transaksi\Satuan.cshtml" />
-    <Content Include="Views\Transaksi\Modal\_ErrorModal.cshtml" />
-    <Content Include="Views\Transaksi\CetakTransaksi.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\Transaksi.cshtml" />
+    <Content Include="Views\CuciSatuan\Index.cshtml" />
+    <Content Include="Views\CekSatuan\Index.cshtml" />
+    <Content Include="Views\CuciSatuan\Modal\_ErrorModal.cshtml" />
+    <Content Include="Views\CuciSatuan\CetakTransaksi.cshtml" />
+    <Content Include="Views\LaporanSatuan\Index.cshtml" />
+    <Content Include="Views\AmbilSatuan\Index.cshtml" />
+    <Content Include="Views\StatusSatuan\Index.cshtml" />
+    <Content Include="Views\CekSatuan\TampilDetil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AmbilKiloan\" />
+    <Folder Include="Views\CekKiloan\" />
+    <Folder Include="Views\CuciKiloan\" />
+    <Folder Include="Views\LaporanKiloan\" />
+    <Folder Include="Views\StatusKiloan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
